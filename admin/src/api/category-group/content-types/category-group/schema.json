@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "category_groups",
+  "info": {
+    "singularName": "category-group",
+    "pluralName": "category-groups",
+    "displayName": "categoryGroup",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "category_group"
+    }
+  }
+}

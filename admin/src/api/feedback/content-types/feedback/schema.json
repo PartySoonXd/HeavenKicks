@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "feedbacks",
+  "info": {
+    "singularName": "feedback",
+    "pluralName": "feedbacks",
+    "displayName": "Feedback"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "message": {
+      "type": "text",
+      "required": true,
+      "maxLength": 3000
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    }
+  }
+}
