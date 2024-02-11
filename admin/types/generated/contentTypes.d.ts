@@ -362,6 +362,250 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiCartCart extends Schema.CollectionType {
+  collectionName: 'carts';
+  info: {
+    singularName: 'cart';
+    pluralName: 'carts';
+    displayName: 'Cart';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    items: Attribute.JSON;
+    userId: Attribute.Relation<
+      'api::cart.cart',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::cart.cart', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::cart.cart', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    products: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::product.product'
+    >;
+    category_group: Attribute.Relation<
+      'api::category.category',
+      'manyToOne',
+      'api::category-group.category-group'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategoryGroupCategoryGroup extends Schema.CollectionType {
+  collectionName: 'category_groups';
+  info: {
+    singularName: 'category-group';
+    pluralName: 'category-groups';
+    displayName: 'categoryGroup';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    categories: Attribute.Relation<
+      'api::category-group.category-group',
+      'oneToMany',
+      'api::category.category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category-group.category-group',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category-group.category-group',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFeedbackFeedback extends Schema.CollectionType {
+  collectionName: 'feedbacks';
+  info: {
+    singularName: 'feedback';
+    pluralName: 'feedbacks';
+    displayName: 'Feedback';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    message: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 3000;
+      }>;
+    email: Attribute.Email & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::feedback.feedback',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::feedback.feedback',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
+  info: {
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'Products';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 200;
+      }>;
+    images: Attribute.Media & Attribute.Required;
+    price: Attribute.Integer & Attribute.Required;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 3000;
+      }>;
+    newArrival: Attribute.Boolean & Attribute.DefaultTo<false>;
+    categories: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::category.category'
+    >;
+    sizes: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        [
+          '36',
+          '36.5',
+          '37',
+          '37.5',
+          '38',
+          '38.5',
+          '39',
+          '39.5',
+          '40',
+          '40.5',
+          '41',
+          '41.5',
+          '42',
+          '42.5',
+          '43',
+          '43.5',
+          '44',
+          '44.5',
+          '45',
+          '45.5',
+          '46'
+        ]
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSubscriberSubscriber extends Schema.CollectionType {
+  collectionName: 'subscribers';
+  info: {
+    singularName: 'subscriber';
+    pluralName: 'subscribers';
+    displayName: 'Subscriber';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    email: Attribute.Email & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::subscriber.subscriber',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::subscriber.subscriber',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -786,250 +1030,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiCartCart extends Schema.CollectionType {
-  collectionName: 'carts';
-  info: {
-    singularName: 'cart';
-    pluralName: 'carts';
-    displayName: 'Cart';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    items: Attribute.JSON;
-    userId: Attribute.Relation<
-      'api::cart.cart',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::cart.cart', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::cart.cart', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCategoryCategory extends Schema.CollectionType {
-  collectionName: 'categories';
-  info: {
-    singularName: 'category';
-    pluralName: 'categories';
-    displayName: 'category';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    products: Attribute.Relation<
-      'api::category.category',
-      'manyToMany',
-      'api::product.product'
-    >;
-    category_group: Attribute.Relation<
-      'api::category.category',
-      'manyToOne',
-      'api::category-group.category-group'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::category.category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::category.category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCategoryGroupCategoryGroup extends Schema.CollectionType {
-  collectionName: 'category_groups';
-  info: {
-    singularName: 'category-group';
-    pluralName: 'category-groups';
-    displayName: 'categoryGroup';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    categories: Attribute.Relation<
-      'api::category-group.category-group',
-      'oneToMany',
-      'api::category.category'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::category-group.category-group',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::category-group.category-group',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiFeedbackFeedback extends Schema.CollectionType {
-  collectionName: 'feedbacks';
-  info: {
-    singularName: 'feedback';
-    pluralName: 'feedbacks';
-    displayName: 'Feedback';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    message: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 3000;
-      }>;
-    email: Attribute.Email & Attribute.Required & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::feedback.feedback',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::feedback.feedback',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiProductProduct extends Schema.CollectionType {
-  collectionName: 'products';
-  info: {
-    singularName: 'product';
-    pluralName: 'products';
-    displayName: 'Products';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 200;
-      }>;
-    images: Attribute.Media & Attribute.Required;
-    price: Attribute.Integer & Attribute.Required;
-    description: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 3000;
-      }>;
-    newArrival: Attribute.Boolean & Attribute.DefaultTo<false>;
-    categories: Attribute.Relation<
-      'api::product.product',
-      'manyToMany',
-      'api::category.category'
-    >;
-    sizes: Attribute.JSON &
-      Attribute.CustomField<
-        'plugin::multi-select.multi-select',
-        [
-          '36',
-          '36.5',
-          '37',
-          '37.5',
-          '38',
-          '38.5',
-          '39',
-          '39.5',
-          '40',
-          '40.5',
-          '41',
-          '41.5',
-          '42',
-          '42.5',
-          '43',
-          '43.5',
-          '44',
-          '44.5',
-          '45',
-          '45.5',
-          '46'
-        ]
-      >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::product.product',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::product.product',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiSubscriberSubscriber extends Schema.CollectionType {
-  collectionName: 'subscribers';
-  info: {
-    singularName: 'subscriber';
-    pluralName: 'subscribers';
-    displayName: 'Subscriber';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    email: Attribute.Email & Attribute.Required & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::subscriber.subscriber',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::subscriber.subscriber',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1040,6 +1040,12 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::cart.cart': ApiCartCart;
+      'api::category.category': ApiCategoryCategory;
+      'api::category-group.category-group': ApiCategoryGroupCategoryGroup;
+      'api::feedback.feedback': ApiFeedbackFeedback;
+      'api::product.product': ApiProductProduct;
+      'api::subscriber.subscriber': ApiSubscriberSubscriber;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -1048,12 +1054,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::cart.cart': ApiCartCart;
-      'api::category.category': ApiCategoryCategory;
-      'api::category-group.category-group': ApiCategoryGroupCategoryGroup;
-      'api::feedback.feedback': ApiFeedbackFeedback;
-      'api::product.product': ApiProductProduct;
-      'api::subscriber.subscriber': ApiSubscriberSubscriber;
     }
   }
 }
