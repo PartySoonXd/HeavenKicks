@@ -15,7 +15,15 @@ export const signUp = async(data) => {
     return user.data
 }
 
-export const googleAuth = async() => {
+export const userAuth = async(token) => {
+    await $apiHost.get('/api/users/me', {
+        headers: {
+            Authorization: `Bearer ${token}` 
+        }
+    })
+}
+
+export const googleInit = async() => {
     await $apiHost.get("/strapi-google-auth/init").then(({data}) => {
         redirect(data.url, "replace")
     })
