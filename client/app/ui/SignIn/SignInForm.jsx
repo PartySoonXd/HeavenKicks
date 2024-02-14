@@ -26,7 +26,7 @@ export default function SignInForm() {
                 user.setIsAuth(true)
             })
         } catch (error) {
-            
+            console.log(error)
         }
     }  
 
