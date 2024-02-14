@@ -1,46 +1,44 @@
 "use client"
 
-import { $apiHost } from "@/app/http";
+import { useEffect, useState } from "react";
+
 import { UserContext } from "@/app/lib/UserContext";
-import { useState, useEffect } from "react";
+import UserStore from "@/app/store/userStore";
+import { getToken } from "@/app/lib/tokenHandler";
+import { $apiHost } from "@/app/http";
+import { observer } from "mobx-react-lite";
 
-export default function UserProvider({children}) {
-    const [isLoading, setIsLoading] = useState(false)
-    const [user, setUser] = useState()
-    const [token, setToken] = useState()
+export default observer(function UserProvider({children}) {
+    const userStore = new UserStore()
+    const [isAuth, setIsAuth] = useState(false)
 
-    const authUserHandler = async (token) => {
-        setIsLoading(true)
-        try {
-            const {data} = await $apiHost.get('/api/users/me', {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-            setUser(data)
-        } catch (error) {
-            console.log(error)
-        } finally {
-            setIsLoading(false)
-        }
-    }
-    
-    const handleUser = (user) => {
-        setUser(user);
-    };
-    
     useEffect(() => {
-        setToken(localStorage.getItem('token'))
-        console.log(token)
-        if (token) {
-            authUserHandler(token)
+        const checkUser = async() => {
+            const token = await getToken()
+            if (token) {
+                try {
+                    const {data} = await $apiHost.get('/api/users/me?fields=id&fields=email&fields=username', {
+                        headers: {
+                            Authorization: `Bearer ${token.value}` 
+                        }
+                    }) 
+                    userStore.setUser(data)
+                    userStore.setIsAuth(true)
+                    setIsAuth(true)
+                } catch (error) {
+                    console.log(error)
+                }
+            }
         }
-    }, [token]) 
+        checkUser()
+    }, [isAuth])
+
+    
     return (
         <UserContext.Provider
-            value={{user, setUser: handleUser, isLoading}}
+            value={{user: userStore}}
         >
             {children}
         </UserContext.Provider>
     )
-}
+})
