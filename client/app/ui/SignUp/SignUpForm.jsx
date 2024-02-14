@@ -1,9 +1,19 @@
 "use client"
 
-import { signUp } from "@/app/http/userAPI"
-import { googleInit } from "@/app/http/userAPI"
+import { $apiHost } from "@/app/http"
+import { useUserContext } from "@/app/lib/UserContext"
+import { setToken } from "@/app/lib/tokenHandler"
+import navigate from "@/app/lib/navigate"
 
 export default function SignUpForm() {
+    const {user} = useUserContext()
+
+    const googleInit = async() => {
+        await $apiHost.get("/strapi-google-auth/init").then(({data}) => {
+            navigate(data.url, "replace")
+        })
+    }
+
     const formHandler = async (e) => {
         try {
             e.preventDefault()
@@ -13,8 +23,11 @@ export default function SignUpForm() {
                 console.log('passwords not equal')
                 return
             }
-            await signUp(data).then(data => {
-                localStorage.setItem('token', data.jwt)
+
+            await $apiHost.post("/api/auth/local/register", data).then(({data}) => {
+                setToken(data.jwt)
+                user.setUser(data.user)
+                user.setIsAuth(true)
             })
         } catch (error) {
             console.log(error)
@@ -31,7 +44,7 @@ export default function SignUpForm() {
 
                 <button type="submit">SIGN UP</button>
             </form>
-            <button type="button" onClick={e => googleInit()}>continue with google</button>
+            <button type="button" onClick={googleInit}>continue with google</button>
         </>
     )
 }
