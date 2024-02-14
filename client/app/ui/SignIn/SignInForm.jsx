@@ -1,10 +1,11 @@
 "use client"
 
-import { googleAuth, signIn } from "@/app/http/userAPI"
+import { googleInit, signIn } from "@/app/http/userAPI"
 
 export default function SignInForm() {
     const formHandler = async(e) => {
         try {
+            e.pentDefault()
             const formData = new FormData(e.currentTarget)
             const data = Object.fromEntries(formData)
     
@@ -23,9 +24,9 @@ export default function SignInForm() {
                 <input type="text" placeholder="email or username" name="identifier"/>
                 <input type="password" placeholder="password" name="password"/>
 
-                <button type="submit">SIGN UP</button>
+                <button type="submit">SIGN IN</button>
             </form>
-            <button onClick={e => googleAuth()}>continue with google</button>
+            <button onClick={e => googleInit()}>continue with google</button>
         </>
         
     )

@@ -1,11 +1,12 @@
 "use client"
 
 import { signUp } from "@/app/http/userAPI"
-import { googleAuth } from "@/app/http/userAPI"
+import { googleInit } from "@/app/http/userAPI"
 
 export default function SignUpForm() {
     const formHandler = async (e) => {
         try {
+            e.preventDefault()
             const formData = new FormData(e.currentTarget)
             const data = Object.fromEntries(formData)
             if (data.password != data.confirmedPassword) {
@@ -30,7 +31,7 @@ export default function SignUpForm() {
 
                 <button type="submit">SIGN UP</button>
             </form>
-            <button type="button" onClick={e => googleAuth()}>continue with google</button>
+            <button type="button" onClick={e => googleInit()}>continue with google</button>
         </>
     )
 }
