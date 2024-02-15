@@ -22,9 +22,12 @@ export default function Header() {
                     </li>
                 </ul>
             </nav>
-            <div className="auth-container">
+            <div className="separate-links">
                 <Link href="/sign-in">Sign in</Link>
                 <Link href="/sign-up">Sign up</Link>
+            </div>
+            <div className="separate-links">
+                <Link href="/cart">Cart</Link>
             </div>
         </header>
     )
