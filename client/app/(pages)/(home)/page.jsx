@@ -28,7 +28,7 @@ export default observer(function Home() {
         console.log(error)
       }
     }
-    
+
     if (authCode) {
       authGoogleUser()
     }
@@ -39,7 +39,7 @@ export default observer(function Home() {
   }
   return (
     <main className="content">
-        <p>{user.user.id ? `hello, ${user.user.id}`: "Please authorize"}</p>
+        <p>{user.user.email ? `hello, ${user.user.email}`: "Please authorize"}</p>
         <h1>Home page</h1>
         <button type="button" onClick={() => logout()}>Logout</button>
     </main>
