@@ -17,7 +17,7 @@ export default observer(function UserProvider({children}) {
             const token = await getToken()
             if (token) {
                 try {
-                    const {data} = await $apiHost.get('/api/users/me?fields=id&fields=email&fields=username', {
+                    const {data} = await $apiHost.get('/api/users/me?fields=id&fields=email&fields=username&populate=cart', {
                         headers: {
                             Authorization: `Bearer ${token.value}` 
                         }
@@ -25,6 +25,7 @@ export default observer(function UserProvider({children}) {
                     userStore.setUser(data)
                     userStore.setIsAuth(true)
                     setIsAuth(true)
+                    console.log(data)
                 } catch (error) {
                     console.log(error)
                 }
