@@ -13,6 +13,25 @@ export default function SignUpForm() {
             navigate(data.url, "replace")
         })
     }
+    const createCart = async(id, token) => {
+        console.log(id, token)
+        await $apiHost.post("/api/carts", {
+            data: {
+                user: {
+                    connect: [id]
+                },
+                products: {}
+            }
+        },
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+        ).then(({data}) => {
+            console.log(data)
+        })
+    }
 
     const formHandler = async (e) => {
         try {
@@ -28,6 +47,7 @@ export default function SignUpForm() {
                 setToken(data.jwt)
                 user.setUser(data.user)
                 user.setIsAuth(true)
+                createCart(data.user.id, data.jwt)
             })
         } catch (error) {
             console.log(error)
