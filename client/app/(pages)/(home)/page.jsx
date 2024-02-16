@@ -2,7 +2,7 @@
 
 import { useUserContext } from "@/app/lib/UserContext";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
 import navigate from "@/app/lib/navigate";
