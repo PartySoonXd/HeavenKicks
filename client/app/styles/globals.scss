@@ -89,8 +89,9 @@ address {
 }
 
 .container {
-	max-width: 1400px;
+	max-width: 1460px;
 	width: 100%;
+	box-sizing: border-box;
 
 	margin: 0 auto;
 	padding: 0 30px;
