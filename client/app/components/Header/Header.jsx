@@ -4,7 +4,7 @@ import Link from "next/link"
 export default function Header() {
     return (
         <header className="header">
-            <div className="logo">
+            <div className="header-logo">
                 <Link href="/">
                     <Image src="Logo.svg" width={292} height={50} alt="HeavenKicks logo"/>                    
                 </Link>

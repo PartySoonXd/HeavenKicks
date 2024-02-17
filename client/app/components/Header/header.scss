@@ -1,8 +1,11 @@
 .header {
     display: flex;
     align-items: center;
-
+    
     margin-top: 30px;
+    &-logo {
+        line-height: 0;
+    }
     &-nav {
         &-list {
             display: flex;
@@ -22,9 +25,11 @@
             display: flex;
             width: 120px;
             height: 50px;
+            box-sizing: border-box;
 
             align-items: center;
             justify-content: center;
+
 
             margin-left: 20px;
             
