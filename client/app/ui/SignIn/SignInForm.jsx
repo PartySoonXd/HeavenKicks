@@ -24,6 +24,7 @@ export default function SignInForm() {
                 setToken(data.jwt)
                 user.setUser(data.user)
                 user.setIsAuth(true)
+                navigate('/')
             })
         } catch (error) {
             console.log(error)
