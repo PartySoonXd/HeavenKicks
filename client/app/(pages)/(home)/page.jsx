@@ -1,16 +1,17 @@
 "use client"
 
-import { useUserContext } from "@/app/lib/UserContext";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
+import { useUserContext } from "@/app/lib/UserContext";
 import navigate from "@/app/lib/navigate";
 import { $apiHost } from "@/app/http";
 import {deleteToken, setToken} from "@/app/lib/tokenHandler";
 
 export default observer(function Home() {
   const {user} = useUserContext()
+    
   const searchParams = useSearchParams()
   const authCode = searchParams.get('code')
 
