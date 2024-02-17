@@ -1,0 +1,23 @@
+.page-intro {
+    display: flex;
+    height: 300px;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 30px;
+
+    border-radius: 50px;
+
+    background: $primary;
+    background-image: url("../../../public/intro-bg-small.png");
+    background-repeat: no-repeat;   
+
+    h1 {
+        margin-left: 40px;
+    }
+    img {
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+    }
+}
