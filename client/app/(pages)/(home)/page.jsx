@@ -8,6 +8,8 @@ import { useUserContext } from "@/app/lib/UserContext";
 import navigate from "@/app/lib/navigate";
 import { $apiHost } from "@/app/http";
 import {deleteToken, setToken} from "@/app/lib/tokenHandler";
+import Intro from "@/app/ui/Home/Intro/Intro";
+import PageIntro from "@/app/components/PageIntro/PageIntro";
 
 export default observer(function Home() {
   const {user} = useUserContext()
@@ -40,9 +42,11 @@ export default observer(function Home() {
   }
   return (
     <main className="content">
-        <p>{user.user.email ? `hello, ${user.user.email}`: "Please authorize"}</p>
-        <h1>Home page</h1>
-        <button type="button" onClick={() => logout()}>Logout</button>
+      <PageIntro 
+        title={<>Step into Sneaker Heaven with <span>Heaven</span>Kicks!</>}
+        image="/home-intro.jpg"
+        className=" home"
+      />
     </main>
   );
 })

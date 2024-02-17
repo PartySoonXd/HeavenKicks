@@ -13,8 +13,20 @@
     background-image: url("../../../public/intro-bg-small.png");
     background-repeat: no-repeat;   
 
+    &.home {
+        height: 400px;
+        background-image: url("../../../public/intro-bg-big.png");
+        img {
+            height: 400px;
+        }
+    }
     h1 {
         margin-left: 40px;
+        max-width: 785px;
+
+        span {
+            color: $accent;
+        }
     }
     img {
         border-top-right-radius: 50px;
