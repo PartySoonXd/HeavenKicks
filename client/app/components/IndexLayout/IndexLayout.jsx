@@ -8,6 +8,7 @@ import { useUserContext } from "@/app/lib/UserContext"
 import { $apiHost } from "@/app/http"
 import { getToken } from "@/app/lib/tokenHandler"
 import { observer } from "mobx-react-lite"
+import Footer from "../Footer/Footer"
 
 export default observer(function IndexLayout({children}) {
     const {user} = useUserContext()
@@ -49,6 +50,7 @@ export default observer(function IndexLayout({children}) {
             {children}
         </div>
         <Newsletter/>
+        <Footer/>
         </>
     )
 })
