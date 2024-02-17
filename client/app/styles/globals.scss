@@ -1,3 +1,5 @@
+@import "vars.scss";
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -17,6 +19,8 @@ time, mark, audio, video {
 	font-size: 100%;
 	font-family: "Poppins", sans-serif;
 	vertical-align: baseline;
+	color: $primary;
+	text-decoration: none;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -42,7 +46,32 @@ table {
 	border-spacing: 0;
 }
 
-
+.h1 {
+	font-size: 60px;
+	line-height: 80px;
+	color: $secondary;
+}
+.h2 {
+	font-size: 48px;
+	line-height: 72px;
+	color: $accent;
+}
+.h3 {
+	font-size: 28px;
+	line-height: 50px;
+}
+.h4 {
+	font-size: 20px;
+	line-height: 30px;
+}
+.links {
+	font-size: 18px;
+	line-height: 27px;
+}
+.p {
+	font-size: 16px;
+	line-height: 24px;
+}
 
 .container {
 	max-width: 1400px;
