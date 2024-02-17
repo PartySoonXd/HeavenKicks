@@ -65,15 +65,15 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "cartId": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::cart.cart",
-      "inversedBy": "userId"
-    },
     "subscribed": {
       "type": "boolean",
       "default": false
+    },
+    "cart": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cart.cart",
+      "inversedBy": "user"
     }
   }
 }
