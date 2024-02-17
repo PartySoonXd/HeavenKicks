@@ -8,7 +8,6 @@ import { useUserContext } from "@/app/lib/UserContext";
 import navigate from "@/app/lib/navigate";
 import { $apiHost } from "@/app/http";
 import {deleteToken, setToken} from "@/app/lib/tokenHandler";
-import Intro from "@/app/ui/Home/Intro/Intro";
 import PageIntro from "@/app/components/PageIntro/PageIntro";
 
 export default observer(function Home() {
