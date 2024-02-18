@@ -25,7 +25,7 @@ export default function NewArrivals() {
                             title={product.title}
                             price={product.price}
                             id={product.id}
-                            key={product.id}
+                            key={products[item].id}
                             image={product.images.data[0].attributes.formats.small?.url}
                         />
                     )

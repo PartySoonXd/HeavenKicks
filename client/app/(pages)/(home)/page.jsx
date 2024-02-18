@@ -10,6 +10,7 @@ import { $apiHost } from "@/app/http";
 import {deleteToken, setToken} from "@/app/lib/tokenHandler";
 import PageIntro from "@/app/components/PageIntro/PageIntro";
 import NewArrivals from "@/app/ui/Home/NewArrivals/NewArrivals";
+import Brands from "@/app/ui/Home/Brands/Brands";
 
 export default observer(function Home() {
   const {user} = useUserContext()
@@ -48,6 +49,7 @@ export default observer(function Home() {
         className=" home"
       />
       <NewArrivals/>
+      <Brands/>
     </main>
   );
 })
