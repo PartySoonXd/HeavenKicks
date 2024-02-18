@@ -11,6 +11,7 @@ import {deleteToken, setToken} from "@/app/lib/tokenHandler";
 import PageIntro from "@/app/components/PageIntro/PageIntro";
 import NewArrivals from "@/app/ui/Home/NewArrivals/NewArrivals";
 import Brands from "@/app/ui/Home/Brands/Brands";
+import IndexLayout from "@/app/components/IndexLayout/IndexLayout";
 
 export default observer(function Home() {
   const {user} = useUserContext()
@@ -42,14 +43,16 @@ export default observer(function Home() {
     user.setIsAuth(false)
   }
   return (
-    <main className="content">
-      <PageIntro 
-        title={<>Step into Sneaker Heaven with <span>Heaven</span>Kicks!</>}
-        image="/home-intro.jpg"
-        className=" home"
-      />
-      <NewArrivals/>
-      <Brands/>
-    </main>
+    <IndexLayout>
+      <main className="content">
+        <PageIntro 
+          title={<>Step into Sneaker Heaven with <span>Heaven</span>Kicks!</>}
+          image="/home-intro.jpg"
+          className=" home"
+        />
+        <NewArrivals/>
+        <Brands/>
+      </main>
+    </IndexLayout>
   );
 })

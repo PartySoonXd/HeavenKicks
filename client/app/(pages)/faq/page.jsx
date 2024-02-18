@@ -1,9 +1,11 @@
+import IndexLayout from "@/app/components/IndexLayout/IndexLayout";
 import PageIntro from "@/app/components/PageIntro/PageIntro";
 import Questions from "@/app/ui/FAQ/Questions/Questions";
 import Link from "next/link";
 
 export default function FAQ() {
     return (
+        <IndexLayout>
         <main className="content">
             <PageIntro title="FAQ" image="/faq-intro.jpg"/>
             <Questions/>
@@ -11,6 +13,6 @@ export default function FAQ() {
                 Still have questions? <Link href="/contacts" style={{color: "#60B3FF", textDecoration: "underline"}}>Ask here</Link>
             </h2>
         </main>
-        
+        </IndexLayout>
     )
 }

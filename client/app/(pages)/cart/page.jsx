@@ -6,6 +6,7 @@ import { useUserContext } from "@/app/lib/UserContext"
 import { observer } from "mobx-react-lite"
 import { $apiHost } from "@/app/http"
 import { getToken } from "@/app/lib/tokenHandler"
+import IndexLayout from "@/app/components/IndexLayout/IndexLayout"
 
 export default observer(function Cart() {
     const {user} = useUserContext()
@@ -34,15 +35,17 @@ export default observer(function Cart() {
     }
     
     return (
-        <main className="content">
-            <h1 className="">Cart</h1>
-            <div>
-                {user.isAuth && user.cart.cart_items && user.cart.cart_items?.data.map(({attributes}) => {
-                    total += attributes.price
-                })}
-                <p>{total}</p>
-            </div>
-            <button type="button" onClick={checkoutHandler}>CHECKOUT</button>
-        </main>
+        <IndexLayout>
+            <main className="content">
+                <h1 className="">Cart</h1>
+                <div>
+                    {user.isAuth && user.cart.cart_items && user.cart.cart_items?.data.map(({attributes}) => {
+                        total += attributes.price
+                    })}
+                    <p>{total}</p>
+                </div>
+                <button type="button" onClick={checkoutHandler}>CHECKOUT</button>
+            </main>
+        </IndexLayout>
     )
 })

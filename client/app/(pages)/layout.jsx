@@ -1,7 +1,6 @@
 import "@/app/styles/main.scss";
 
 import UserProvider from "../components/UserProvider/UserProvider";
-import IndexLayout from "../components/IndexLayout/IndexLayout";
 
 export const metadata = {
   title: "HeavenKicks",
@@ -18,7 +17,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <UserProvider>
-          <IndexLayout children={children}/>
+          {children}
         </UserProvider>
       </body>
     </html>
