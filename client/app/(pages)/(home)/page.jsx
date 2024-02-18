@@ -9,6 +9,7 @@ import navigate from "@/app/lib/navigate";
 import { $apiHost } from "@/app/http";
 import {deleteToken, setToken} from "@/app/lib/tokenHandler";
 import PageIntro from "@/app/components/PageIntro/PageIntro";
+import NewArrivals from "@/app/ui/Home/NewArrivals/NewArrivals";
 
 export default observer(function Home() {
   const {user} = useUserContext()
@@ -46,6 +47,7 @@ export default observer(function Home() {
         image="/home-intro.jpg"
         className=" home"
       />
+      <NewArrivals/>
     </main>
   );
 })
