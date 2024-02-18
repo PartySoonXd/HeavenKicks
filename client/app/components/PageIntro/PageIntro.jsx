@@ -7,7 +7,7 @@ export default function PageIntro({title, image, className=""}) {
             <h1 className="h1">{title}</h1>
             <Image src={image} width={530} height={300} alt={`${title} intro`}/>
             {className && 
-            <div className="pretty-button-container">
+            <div className="page-intro-pretty-button-container">
                 <PrettyButton url="/catalog" text="Buy now"/>
             </div>}
         </div>
