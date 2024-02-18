@@ -1,0 +1,40 @@
+.input-field {
+    width: 300px;
+
+    
+    margin-top: 20px;
+    padding: 0 0 5px 10px;
+    
+    color: $primary;
+    
+    background: transparent;
+    border: none;
+    appearance: none;
+    border-bottom: 2px solid $accent;
+    
+    &::placeholder {
+        color: $primary
+    }
+    &:focus {
+        outline: none;
+        border-bottom: 2px solid $primary;
+    }
+}
+
+.google-button {
+    display: flex;
+    width: 320px;
+    height: 60px;
+    box-sizing: border-box;
+
+    justify-content: center;
+    align-items: center;
+
+    background: transparent;
+    border: 2px solid $primary;
+    border-radius: 30px;
+
+    img {
+        margin-left: 10px;
+    }
+}

@@ -4,17 +4,14 @@ import { $apiHost } from "@/app/http"
 import { useUserContext } from "@/app/lib/UserContext"
 import { setToken } from "@/app/lib/tokenHandler"
 import navigate from "@/app/lib/navigate"
+import InputField from "@/app/components/Auth/InputField/InputField"
+import GoogleButton from "@/app/components/Auth/GoogleButton/GoogleButton"
 
 export default function SignUpForm() {
     const {user} = useUserContext()
 
-    const googleInit = async() => {
-        await $apiHost.get("/strapi-google-auth/init").then(({data}) => {
-            navigate(data.url, "replace")
-        })
-    }
+    
     const createCart = async(id, token) => {
-        console.log(id, token)
         await $apiHost.post("/api/carts", {
             data: {
                 user: {
@@ -28,9 +25,7 @@ export default function SignUpForm() {
                 Authorization: `Bearer ${token}`
             }
         }
-        ).then(({data}) => {
-            console.log(data)
-        })
+        )
     }
 
     const formHandler = async (e) => {
@@ -55,16 +50,18 @@ export default function SignUpForm() {
     }
 
     return (
-        <>
-            <form onSubmit={e => formHandler(e)}>
-                <input type="text" placeholder="username" name="username"/>
-                <input type="email" placeholder="email" name="email"/>
-                <input type="password" placeholder="password" name="password"/>
-                <input type="password" placeholder="confirm password" name="confirmedPassword"/>
-
-                <button type="submit">SIGN UP</button>
+        <div className="auth-form-container">
+            <h1 className="h1 auth-form-title">Sign up</h1>
+            <form onSubmit={e => formHandler(e)} className="auth-form">
+                <InputField type="text" placeholder="username" name="username"/>
+                <InputField type="email" placeholder="email" name="email"/>
+                <InputField type="password" placeholder="password" name="password"/>
+                <InputField type="password" placeholder="confirm password" name="confirmedPassword"/>
+    
+                <button type="submit" className="auth-form-button links">SIGN UP</button>
             </form>
-            <button type="button" onClick={googleInit}>continue with google</button>
-        </>
+            <span className="h4">or</span>
+            <GoogleButton/>
+        </div>
     )
 }
