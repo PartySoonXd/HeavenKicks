@@ -1,0 +1,23 @@
+.payment-template {
+    display: flex;
+    height: 100vh;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    &-status {
+        font-size: 100px;
+        font-weight: 900;
+        color: $accent;
+    }
+    .h1 {
+        margin-bottom: 55px;
+
+        color: $primary;
+        a {
+            color: $accent;
+            text-decoration: underline;
+        }
+    }
+}

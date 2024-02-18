@@ -1,10 +1,10 @@
+import PaymentTemplate from "@/app/ui/PaymentTemplate/PaymentTemplate";
 import Link from "next/link";
 
 export default function PaymentFailed() {
     return (
-        <div className="payment-failed">
-            <h1>FAILED</h1>
-            <Link href="/">Go to home</Link>
-        </div>
+        <PaymentTemplate status="Failed!" component={
+            <div className="h1">Payment unsuccessful. Try later.</div>
+        }/>
     )
 }
