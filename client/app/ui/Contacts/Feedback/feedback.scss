@@ -1,0 +1,68 @@
+.feedback {
+    position: relative;
+    margin-left: 140px;
+    &-title {
+        margin-bottom: 20px;
+    }
+    &::before {
+        content: "";
+        width: 2px;
+        height: 100%;
+        display: block;
+
+        position: absolute;
+        left: -70px;
+        top: -10px;
+
+
+        background: $primary;
+    }
+    &-form {
+        display: flex;
+
+        flex-direction: column;
+
+        &-input, &-textarea {
+            width: 350px;
+            height: 50px;
+            
+            padding: 0 20px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            
+            border: 2px solid $primary;
+            border-radius: 25px;
+            color: $accent;
+            
+            &::placeholder {
+                color: $accent;
+                opacity: .7;
+            }
+        }
+        &-textarea {
+            width: 450px;
+            height: 200px;
+
+            padding-top: 10px;
+
+            resize: none;
+            text-align: justify;
+        }
+        &-button {
+            width: 250px;
+            height: 50px;
+
+            margin-top: 10px;
+
+            border-radius: 25px;
+            border: none;
+            appearance: none;   
+
+            background: $accent;
+            color: $secondary;
+
+            text-align: center;
+            
+        }
+    }
+}
