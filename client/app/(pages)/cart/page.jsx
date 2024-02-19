@@ -8,32 +8,34 @@ import { $apiHost } from "@/app/http"
 import { getToken } from "@/app/lib/tokenHandler"
 import IndexLayout from "@/app/components/IndexLayout/IndexLayout"
 import PageIntro from "@/app/components/PageIntro/PageIntro"
+import CartItems from "@/app/ui/Cart/CartItems/CartItems"
 
 export default observer(function Cart() {
     const {user} = useUserContext()
-    const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY)
     let total = 0
-    const checkoutHandler = async() => {
-        try {
-            const stripe = await stripePromise
-            const token = await getToken()
-            const cartId = user.user.cart.id
+    // const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY)
 
-            const res = await $apiHost.post("/api/orders", {
-                cartId
-            }, {
-                headers: {
-                    Authorization: `Bearer ${token.value}`
-                }
-            })
+    // const checkoutHandler = async() => {
+    //     try {
+    //         const stripe = await stripePromise
+    //         const token = await getToken()
+    //         const cartId = user.user.cart.id
 
-            await stripe.redirectToCheckout({
-                sessionId: res.data.stripeSession.id
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    //         const res = await $apiHost.post("/api/orders", {
+    //             cartId
+    //         }, {
+    //             headers: {
+    //                 Authorization: `Bearer ${token.value}`
+    //             }
+    //         })
+
+    //         await stripe.redirectToCheckout({
+    //             sessionId: res.data.stripeSession.id
+    //         })
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
     
     return (
         <IndexLayout>
@@ -45,7 +47,8 @@ export default observer(function Cart() {
                     })}
                     <p>{total}</p>
                 </div>
-                <button type="button" onClick={checkoutHandler}>CHECKOUT</button>
+                <CartItems/>
+                {/* <button type="button" onClick={checkoutHandler}>CHECKOUT</button> */}
             </main>
         </IndexLayout>
     )
