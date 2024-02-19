@@ -1,0 +1,202 @@
+.filters {
+    max-width: 360px;
+    width: 100%;
+
+    margin-right: 10px;
+    &-price {
+        &-slider {
+            width: 100%;
+            height: 4px;
+            box-sizing: border-box;
+
+            position: relative;
+
+            background: $accent;
+            border-radius: 2px;
+            pointer-events: none;
+            &-values {
+                display: flex;
+                
+                align-items: center;
+                justify-content: space-between;
+
+                margin: 0 -15px 6px 0px;
+                .min-value, .max-value {
+                    color: $accent;
+                }
+            }
+            &-progress {
+                height: 4px;
+                
+                position: absolute;
+
+                left: 0;
+                right: 0;
+
+                background: $primary;
+                pointer-events: none;
+                .current-values {
+                    display: flex;
+
+                    justify-content: space-between;
+
+                    margin-top: 10px;
+                    .min-value, .max-value {
+                        color: $accent;
+                    }
+                }
+            }
+            &-container {
+                margin-top: 10px;
+                padding: 0 20px;   
+            }
+        }
+        &-inputs {
+            width: 100%;
+            height: 4px;
+
+            position: relative;
+            
+            pointer-events: none;           
+            input {
+                width: 100%;
+                height: 4px;
+                
+                position: absolute;
+                top: -4px;
+                
+                background: none;
+                appearance: none;
+                pointer-events: none;
+
+                cursor: pointer;
+                &::-webkit-slider-thumb {
+                    width: 16px;
+                    height: 16px;
+
+                    border-radius: 50%;
+                    background: $primary;
+                    appearance: none;
+                    border: none;
+                    pointer-events: all;
+                }
+                &::-moz-range-thumb {
+                    width: 16px;
+                    height: 16px;
+    
+                    border-radius: 50%;
+                    background: $primary;
+                    appearance: none;
+                    border: none;
+                    pointer-events: auto;
+
+                }
+            }
+        }
+    }
+}
+
+.category {
+    display: flex;
+
+    align-items: center;
+
+    margin-bottom: 3px;
+    padding-left: 20px;
+
+    &-checkbox {
+        width: 25px;
+        height: 25px;
+        
+        border: 2px solid $accent;
+        border-radius: 5px;
+        
+        appearance: none;
+        outline: none;
+        cursor: pointer;
+        &:checked {
+            background: $accent;
+            background-image: url("../../../../public/checkmark.png");
+            background-size: 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+    &-label {
+        width: 100%;
+        
+        padding-left: 10px;
+
+        color: $accent;
+        text-transform: capitalize;
+        cursor: pointer;
+    }
+    color: $accent;
+    &-group {
+        display: flex;
+
+        margin-bottom: 10px;
+
+        flex-direction: column;
+        &.active {
+            margin-bottom: 30px;
+        }
+        &-title {
+            display: flex;
+            width: 100%;
+            height: 70px;
+            box-sizing: border-box;
+            
+            position: relative;
+            align-items: center;
+            justify-content: space-between;
+
+            padding-right: 20px;
+            margin: 0;
+
+            border-radius: 20px;
+            background: $primary;
+            &.active {
+                margin-bottom: 10px;
+            }
+            &-text {
+                display: block;
+
+                padding-left: 20px;
+    
+                color: $accent;
+            }
+            .cross {
+                display: flex;
+                width: 20px;
+                height: 20px;
+                
+                align-items: center;
+                justify-content: center;
+                position: relative;
+        
+                padding: 20px;
+        
+                cursor: pointer;
+                &::before, &::after {
+                    content: "";
+                    width: 20px;
+                    height: 2px;
+        
+                    position: absolute;
+        
+                    background: $accent;
+                }
+                &.active {
+                    &::before {
+                        transform: rotateZ(0);
+                    }
+                }
+                &::before {
+                    transform: rotateZ(90deg);
+                }
+            }
+        }
+    }
+    
+}
