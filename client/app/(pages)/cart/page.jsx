@@ -7,6 +7,7 @@ import { observer } from "mobx-react-lite"
 import { $apiHost } from "@/app/http"
 import { getToken } from "@/app/lib/tokenHandler"
 import IndexLayout from "@/app/components/IndexLayout/IndexLayout"
+import PageIntro from "@/app/components/PageIntro/PageIntro"
 
 export default observer(function Cart() {
     const {user} = useUserContext()
@@ -37,7 +38,7 @@ export default observer(function Cart() {
     return (
         <IndexLayout>
             <main className="content">
-                <h1 className="">Cart</h1>
+                <PageIntro title="Cart" image="/cart-intro.jpg"/>
                 <div>
                     {user.isAuth && user.cart.cart_items && user.cart.cart_items?.data.map(({attributes}) => {
                         total += attributes.price

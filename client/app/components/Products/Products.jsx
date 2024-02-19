@@ -24,7 +24,7 @@ export default function Products({filters, className}) {
                     <ProductCard 
                         title={product.title}
                         price={product.price}
-                        id={product.id}
+                        id={products[item].id}
                         key={products[item].id}
                         image={product.images.data[0].attributes.formats.small?.url}
                     />
