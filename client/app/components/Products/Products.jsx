@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import ProductCard from "@/app/components/ProductCard/ProductCard"
 import { $apiHost } from "@/app/http"
 
-export default function NewArrivalsProducts() {
+export default function Products({filters, className}) {
     const [products, setProducts] = useState()
     useEffect(() => {
         const getProducts = async() => {
@@ -17,7 +17,7 @@ export default function NewArrivalsProducts() {
         getProducts()
     }, [])
     return (
-        <ul className="new-arrivals-products">
+        <ul className={`products ${className}`}>
             {products && Object.keys(products).map(item => {
                 const product = products[item].attributes
                 return (

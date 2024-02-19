@@ -1,5 +1,5 @@
 import PageIntro from "@/app/components/PageIntro/PageIntro";
-import NewArrivalsProducts from "@/app/components/NewArrivalsProducts/NewArrivalsProducts";
+import Products from "@/app/components/Products/Products";
 import PrettyButton from "@/app/components/PrettyButton/PrettyButton";
 import IndexLayout from "@/app/components/IndexLayout/IndexLayout";
 
@@ -9,7 +9,7 @@ export default function NewArrivals() {
         <main className="content">
             <PageIntro title="New arrivals" image="/new-arrivals-intro.jpg"/>
             <div className="new-arrivals-container" style={{margin: "30px 0 40px 0"}}>
-                <NewArrivalsProducts/>
+                <Products/>
             </div>
             <div className="new-arrivals-button-container" style={{
                 display: "flex",
