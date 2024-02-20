@@ -3,12 +3,14 @@ import Image from "next/image"
 import { $apiHost } from "@/app/http"
 import { useUserContext } from "@/app/lib/UserContext"
 import { getToken } from "@/app/lib/tokenHandler"
+import Link from "next/link"
 
-export default function ProductCard({title, price, id, image}) {
+export default function ProductCard({title, price, image, slug}) {
     const {user} = useUserContext()
-    const getProductById = async() => {
-        const {data} = await $apiHost.get(`/api/products/${id}`)
-        return data.data
+    const getProductBySlug = async() => {
+        const {data} = await $apiHost.get(`/api/products?filters[slug][$eq]=${slug}&populate=images`)
+        console.log(data.data[0].attributes.images.data[0].attributes.formats.medium.url)
+        return data.data[0]
     }
     const updateCartStore = async(id, token) => {
         await $apiHost.get(`/api/carts/${id}?populate=cart_items`, {
@@ -25,7 +27,7 @@ export default function ProductCard({title, price, id, image}) {
             console.log('Please login to add to cart')
             return
         }
-        const {attributes} = await getProductById()
+        const {attributes} = await getProductBySlug()
 
         const cartId = user.user.cart.id
         const token = await getToken()
@@ -36,7 +38,7 @@ export default function ProductCard({title, price, id, image}) {
                 },
                 title: attributes.title,
                 price: attributes.price,
-                quantity: 1,
+                imageURL: attributes.images.data[0].attributes.formats.medium.url,
                 size: undefined
             },
         }, {
@@ -49,8 +51,10 @@ export default function ProductCard({title, price, id, image}) {
     }
     return (
         <li className="product-card">
-            <img src={"http://127.0.0.1:1337" + image} alt={title} className="product-card-img"/>
-            <h3 className="product-card-title h4">{title}</h3>
+            <Link href={`/product/${slug}`}>
+                <img src={"http://127.0.0.1:1337" + image} alt={title} className="product-card-img"/>
+                <h3 className="product-card-title h4">{title}</h3>
+            </Link>
             <div className="product-card-footer">
                 <p className="product-card-price h3">{price}<span>$</span></p>
                 <button type="button" onClick={addToCartHandler}>
