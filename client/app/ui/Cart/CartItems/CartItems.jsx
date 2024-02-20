@@ -1,6 +1,6 @@
 import { useUserContext } from "@/app/lib/UserContext"
 
-export default function CartItems({items}) {
+export default function CartItems() {
     const {user} = useUserContext()
 
     return (
