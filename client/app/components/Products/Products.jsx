@@ -9,7 +9,7 @@ export default function Products({filters, className}) {
     const [products, setProducts] = useState()
     useEffect(() => {
         const getProducts = async() => {
-            await $apiHost.get("/api/products?fields[0]=title&fields[1]=price&fields[2]=newArrival&populate[images][fields]=formats")
+            await $apiHost.get("/api/products?fields[0]=title&fields[1]=price&fields[2]=newArrival&fields[3]=slug&populate[images][fields]=formats")
             .then(({data}) => {
                 setProducts(data.data)
             })
@@ -24,8 +24,8 @@ export default function Products({filters, className}) {
                     <ProductCard 
                         title={product.title}
                         price={product.price}
-                        id={products[item].id}
-                        key={products[item].id}
+                        slug={product.slug}
+                        key={product.slug}
                         image={product.images.data[0].attributes.formats.small?.url}
                     />
                 )
