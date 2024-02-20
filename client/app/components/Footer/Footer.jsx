@@ -32,15 +32,15 @@ export default function Footer () {
                     <address className="contacts-container">
                         <ul className="footer-contacts-list">
                             <li className="footer-contacts-item">
-                                <Image src="phone-icon.svg" width={30} height={30} alt="phone icon"/>
+                                <Image src="/phone-icon.svg" width={30} height={30} alt="phone icon"/>
                                 <a href="tel:+(123) 456 7890" className="footer-contacts-text h4">+(123) 456 7890</a>
                             </li>
                             <li className="footer-contacts-item">
-                                <Image src="mail-icon.svg" width={30} height={30} alt="mail icon"/>
+                                <Image src="/mail-icon.svg" width={30} height={30} alt="mail icon"/>
                                 <a href="mailto:heavenkicks@gmail.com" className="footer-contacts-text h4">heavenkicks@gmail.com</a>
                             </li>
                             <li className="footer-contacts-item">
-                                <Image src="location-icon.svg" width={30} height={30} alt="location icon"/>
+                                <Image src="/location-icon.svg" width={30} height={30} alt="location icon"/>
                                 <span className="footer-contacts-text h4">515, Wilson Ave, Brooklyn, New York</span>
                             </li>
                         </ul>

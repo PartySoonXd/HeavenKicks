@@ -6,7 +6,7 @@ export default function Header() {
         <header className="header">
             <div className="header-logo">
                 <Link href="/">
-                    <Image src="Logo.svg" width={292} height={50} alt="HeavenKicks logo"/>                    
+                    <Image src="/Logo.svg" width={292} height={50} alt="HeavenKicks logo"/>                    
                 </Link>
             </div>
             <nav className="header-nav">
