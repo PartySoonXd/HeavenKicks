@@ -1,31 +1,6 @@
-"use client"
-
-import { $apiHost } from "@/app/http"
 import Image from "next/image"
-import { useEffect, useState } from "react"
 
 export default function ProductInfo({info}) {
-    const [categories, setCategories] = useState([])
-    useEffect(() => {
-        const getCategories = () => {
-            const categoriesArray = []
-            info.categories.data.forEach(async (item) => {
-                const name = item.attributes.name
-                const category = await $apiHost.get(`/api/categories?filters[name][$eq]=${name}&fields=name&populate[category_group][fields]=name`)
-                .then(({data}) => {
-                    return {
-                        group: data.data[0].attributes.category_group.data.attributes.name,
-                        name
-                    }
-                })
-                categoriesArray.push(category)
-            })
-            return categoriesArray
-        }
-        const a = getCategories()
-        console.log(a)
-        setCategories(a)
-    }, [])
     return (
         <div className="product-info">
             <h1 className="product-info-title">{info.title}</h1>
@@ -54,17 +29,7 @@ export default function ProductInfo({info}) {
             </div>
             <div className="product-info-description">
                 <h3 className="product-info-subtitle h3">Description</h3>
-                <ul className="product-info-description-categories">
-                    {Object.keys(categories).map((item, i) => {
-
-                        return (
-                            <li className="product-info-description-category" key={i}>
-                                <p className="product-info-description-category-group links">{categories[item].group}</p>
-                                <p className="product-info-description-category-name links">{categories[item].name}</p>
-                            </li>
-                        )
-                    })}
-                </ul>
+                <p className="p product-info-description-text">{info.description}</p>
             </div>
         </div>
     )

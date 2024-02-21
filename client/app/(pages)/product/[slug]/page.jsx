@@ -7,11 +7,11 @@ import { useEffect, useState } from "react"
 
 export default function ProductPage({params}) {
     const [product, setProduct] = useState()
+    
     useEffect(() => {
         const getProduct = async() => {
             await $apiHost.get(`/api/products?filters[slug][$eq]=${params.slug}&populate=*`).then(({data}) => {
                 setProduct(data.data[0].attributes)
-                // console.log(data.data[0].attributes)
             })
         }
         getProduct()

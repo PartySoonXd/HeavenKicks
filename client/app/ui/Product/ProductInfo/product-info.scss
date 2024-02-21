@@ -94,27 +94,10 @@
         background: $accent;
     }
     &-description {
-        &-categories {
-            display: flex;
+        &-text {
+            margin-top: 10px;
 
-            flex-direction: column;
-        }
-        &-category {
-            display: flex;
-            max-width: 270px;
-            box-sizing: border-box;
-
-            justify-content: space-between;
-
-            padding: 0 10px;
-            margin: 5px 0;
-
-            border-bottom: 2px solid $primary;
-            &-name {
-                color: $accent;
-
-                text-transform: capitalize;
-            }
+            text-align: justify;
         }
     }
 }
