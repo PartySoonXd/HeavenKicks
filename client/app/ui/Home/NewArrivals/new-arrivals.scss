@@ -1,6 +1,8 @@
 .new-arrivals {
     margin-top: 70px;
-
+    &-title {
+        margin-bottom: 20px;
+    }
     &-pretty-button-container {
         display: flex;
 
