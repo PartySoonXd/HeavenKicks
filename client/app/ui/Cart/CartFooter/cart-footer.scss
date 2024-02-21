@@ -1,0 +1,35 @@
+.cart-footer {
+    &-total {
+        margin: -20px 0 20px 0;
+        span {
+            color: $primary;
+        }
+    }
+    &-buttons {
+        display: flex;
+        .catalog {
+            width: 400px;
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 20px 70px 0;
+
+            background: $accent;
+        }
+        .checkout {
+            width: 500px;
+
+            background: $primary;
+        }
+        .catalog, .checkout {
+            height: 80px;
+
+            border-radius: 35px;
+            color: $secondary;
+
+            cursor: pointer;
+        }
+    }
+}

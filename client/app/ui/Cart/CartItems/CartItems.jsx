@@ -1,12 +1,17 @@
-import { useUserContext } from "@/app/lib/UserContext"
+import CartItem from "./CartItem"
 
-export default function CartItems() {
-    const {user} = useUserContext()
-
+export default function CartItems({items}) {
     return (
         <ul className="cart-items">
-            {user.isAuth && user.cart.cart_items && user.cart.cart_items?.data.map(({attributes}) => {
-                console.log(attributes)
+            {items && items.data.map(({attributes, id}) => {
+                return <CartItem 
+                    imageURL={attributes.imageURL}
+                    size={attributes.size}
+                    price={attributes.price}
+                    title={attributes.title}
+                    key={id}
+                    id={id}
+                />
             })}
         </ul>
     )

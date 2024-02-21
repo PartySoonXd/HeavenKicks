@@ -9,46 +9,17 @@ import { getToken } from "@/app/lib/tokenHandler"
 import IndexLayout from "@/app/components/IndexLayout/IndexLayout"
 import PageIntro from "@/app/components/PageIntro/PageIntro"
 import CartItems from "@/app/ui/Cart/CartItems/CartItems"
+import CartFooter from "@/app/ui/Cart/CartFooter/CartFooter"
 
 export default observer(function Cart() {
     const {user} = useUserContext()
-    let total = 0
-    // const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY)
 
-    // const checkoutHandler = async() => {
-    //     try {
-    //         const stripe = await stripePromise
-    //         const token = await getToken()
-    //         const cartId = user.user.cart.id
-
-    //         const res = await $apiHost.post("/api/orders", {
-    //             cartId
-    //         }, {
-    //             headers: {
-    //                 Authorization: `Bearer ${token.value}`
-    //             }
-    //         })
-
-    //         await stripe.redirectToCheckout({
-    //             sessionId: res.data.stripeSession.id
-    //         })
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
-    
     return (
         <IndexLayout>
             <main className="content">
                 <PageIntro title="Cart" image="/cart-intro.jpg"/>
-                <div>
-                    {user.isAuth && user.cart.cart_items && user.cart.cart_items?.data.map(({attributes}) => {
-                        total += attributes.price
-                    })}
-                    <p>{total}</p>
-                </div>
-                <CartItems/>
-                {/* <button type="button" onClick={checkoutHandler}>CHECKOUT</button> */}
+                <CartItems items={user.cart.cart_items}/>
+                <CartFooter/>
             </main>
         </IndexLayout>
     )
