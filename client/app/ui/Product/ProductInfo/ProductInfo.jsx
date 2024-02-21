@@ -3,7 +3,7 @@ import Image from "next/image"
 export default function ProductInfo({info}) {
     return (
         <div className="product-info">
-            <h1 className="product-info-title">{info.title}</h1>
+            <h1 className="product-info-title h2">{info.title}</h1>
             <h2 className="product-info-price">
                 <div className="product-info-price-container">
                     {info.price}

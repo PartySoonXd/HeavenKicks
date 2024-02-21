@@ -16,11 +16,8 @@ export default function SignIn() {
                     src="/sign-in-photo.jpg" 
                     width={919} 
                     height={900} 
-                    style={{
-                        maxWidth: "900px", 
-                        height: "auto"
-                    }}
                     alt="sign in photo"
+                    className="auth-image"
                 />
             </div>
         </main>

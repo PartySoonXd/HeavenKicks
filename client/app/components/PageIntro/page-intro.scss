@@ -12,6 +12,7 @@
 
     background: $primary;
     background-image: url("../../../public/intro-bg-small.png");
+    background-position-y: center;
     background-repeat: no-repeat;   
 
     &.home {
@@ -19,6 +20,33 @@
         background-image: url("../../../public/intro-bg-big.png");
         img {
             height: 400px;
+            object-fit: cover;
+        }
+        @include media($l-breakpoint) {
+            background-image: none;
+            h1 {
+                font-size: 54px;
+                line-height: 54px;
+
+                margin-right: 20px;
+            }
+        }
+        @include media($m-breakpoint) {
+            flex-direction: column;
+            height: auto;
+            padding: 30px;
+            h1 {
+                font-size: 44px;
+                text-align: center;
+                
+                margin: 0 0 20px 0;
+            }
+            img {
+                height: 300px;
+                align-self: flex-start;
+                border-radius: 0 0 0 50px;
+                display: none;
+            }
         }
     }
     h1 {
@@ -32,10 +60,41 @@
     img {
         border-top-right-radius: 50px;
         border-bottom-right-radius: 50px;
+
+        object-fit: cover;
     }
     &-pretty-button-container {
         position: absolute;
         bottom: 40px;
         right: 40px;
+        @include media($m-breakpoint) {
+            position: relative;
+            bottom: 0;
+            right: 0;
+            .pretty-button {
+                color: $primary;
+                &::before {
+                    background: $secondary;
+                }
+            }
+        }
+    }
+    @include media($m-breakpoint) {
+        height: 200px;
+        img {
+            width: 330px;
+            height: 100%;
+        }
+    }
+    @include media($s-breakpoint) {
+        justify-content: center;
+        background-position: center;
+        background-size: cover;
+        img {
+            display: none;
+        }
+        h1 {
+            margin: 0;
+        }
     }
 }

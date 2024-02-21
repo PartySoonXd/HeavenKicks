@@ -2,11 +2,23 @@
     display: flex;
     align-items: center;
     
+    position: relative;
+
     margin-top: 30px;
     &-logo {
         line-height: 0;
+        &-img {
+            &.mobile {
+                display: none;
+            }
+        }
     }
     &-nav {
+        width: 100%;
+        display: flex;
+
+        justify-content: space-between;
+        align-items: center;
         &-list {
             display: flex;
 
@@ -15,35 +27,158 @@
         &-item {
             margin: 0 20px;
         }
-    }
-    .separate-links {
-        display: flex;
-
-        margin-left: auto;
-
-        .auth-button {
+        .separate-links {
             display: flex;
-            width: 120px;
-            height: 50px;
-            box-sizing: border-box;
-
-            align-items: center;
-            justify-content: center;
-
-
-            margin-left: 20px;
-            
-            border-radius: 25px;
-            &.sign-up-btn {
-                background: $accent;
-                color: $secondary;
+    
+            .auth-button {
+                display: flex;
+                width: 120px;
+                height: 50px;
+                box-sizing: border-box;
+    
+                align-items: center;
+                justify-content: center;
+    
+    
+                margin-left: 20px;
+                
+                border-radius: 25px;
+                &.sign-up-btn {
+                    background: $accent;
+                    color: $secondary;
+                }
+                &.sign-in-btn {
+                    z-index: 0;
+                    border: 2px solid $primary;
+                    background: transparent;
+                    color: $primary;
+                }
             }
-            &.sign-in-btn {
-                z-index: 0;
-                border: 2px solid $primary;
-                background: transparent;
-                color: $primary;
+    }
+    }
+    &-hamburger {
+        display: none;
+        width: 30px;
+        height: 15px;
+        
+        position: absolute;
+        right: 0;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+
+        background: $accent;
+        border-radius: 40px;
+        z-index: 101;
+
+        padding: 15px;
+
+        &-element {
+            width: 30%;
+            height: 2px;
+            display: block;
+
+            padding: 0 5px;
+
+            background: $secondary;
+            &:nth-child(1) {
+                transform: translateY(0) rotate(0);
+                transition: transform .5s ease;
+                
+            }
+            &:nth-child(2) {
+                opacity: 1;
+                transition: opacity .2s ease;
+            }
+            &:nth-child(3) {
+                transform: translateY(0) rotate(0);
+                transition: transform .5s ease;
             }
         }
+
+        &.active {
+            span {
+                &:nth-child(1) {
+                    transform-origin: center;
+                    transform: translateY(6.5px) rotate(-45deg);
+                    transition: transform .5s ease;
+                }
+                &:nth-child(2) {
+                    opacity: 0;
+                    transition: opacity .2s ease;
+                }
+                &:nth-child(3) {
+                    transform-origin: center;
+                    transform: translateY(-6.5px) rotate(45deg);
+                    transition: transform .5s ease;
+                }
+            }
+        }
+        
+    }
+    @include media($l-breakpoint) {
+        &-nav {
+            &-list {
+                margin: 0 0 0 10px;
+            }
+            &-item {
+                margin: 0 10px;
+            }
+        }
+    }
+    .separate-links {
+        .auth-button {
+            width: 90px;
+
+        }
+    }
+    @include media($m-breakpoint) {
+        margin-top: 15px;
+        &-hamburger {
+            display: flex;
+            position: fixed;
+            right: 15px;
+        }
+        &-nav {
+            align-items: flex-start;
+            flex-direction: column-reverse;
+            position: fixed;
+            left: 0;
+            top: -100%;
+
+            padding: 20px;
+            background: $secondary;
+            z-index: 100;
+            
+            transition: top .4s ease-in;
+            &.active {
+                top: 0;
+                transition: top .3s linear;
+            }
+            &-list {
+                flex-direction: column;
+                margin: 0;
+            }
+            &-item {
+                margin: 5px 0;
+            }
+            .separate-links {
+                margin-bottom: 10px;
+                .auth-button {
+                    margin: 0 10px 0 0;
+                }
+            }
+        }
+    }
+    @include media($xs-breakpoint) {
+        &-logo {
+            &-img {
+                display: none;
+                &.mobile {
+                    display: block;
+                }
+            }
+        }
+        
     }
 }

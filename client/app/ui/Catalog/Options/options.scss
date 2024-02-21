@@ -2,6 +2,18 @@
     display: flex;
 
     justify-content: flex-end;
+    align-items: center;
+
+    margin-bottom: 20px;
+    
+    &-filters {
+        display: none;
+
+        margin-right: auto;
+        padding-left: 20px;
+
+        cursor: pointer;
+    }
     &-search {
         width: 300px;
         height: 50px;
@@ -14,6 +26,7 @@
         height: 50px;
         
         align-items: center;
+        position: relative;
         
         cursor: pointer;
         
@@ -87,5 +100,39 @@
         border: 2px solid $accent;
         border-radius: 25px;
         color: $accent;    
+    }
+
+    @include media($s-breakpoint) {
+        &-search {
+            width: 150px;
+        }
+        &-select {
+            &::after {
+                display: none;
+            }
+            &-container {
+                width: 100px;
+
+                margin-right: 5px;
+            }
+            &-dropdown {
+                width: 90px;
+                &-item {
+                    height: 35px;
+
+                    justify-content: center;
+
+                    padding: 0 5px;
+                }
+            }
+        }
+        &-filters {
+            display: block;
+        }
+    }
+    @include media($xxs-breakpoint) {
+        &-filters {
+            padding: 0;
+        }
     }
 }

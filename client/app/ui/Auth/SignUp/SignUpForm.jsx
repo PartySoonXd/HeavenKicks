@@ -1,5 +1,8 @@
 "use client"
 
+import Link from "next/link"
+import Image from "next/image"
+
 import { $apiHost } from "@/app/http"
 import { useUserContext } from "@/app/lib/UserContext"
 import { setToken } from "@/app/lib/tokenHandler"
@@ -17,7 +20,6 @@ export default function SignUpForm() {
                 user: {
                     connect: [id]
                 },
-                products: {}
             }
         },
         {
@@ -51,6 +53,9 @@ export default function SignUpForm() {
 
     return (
         <div className="auth-form-container">
+            <Link href="/" className="auth-form-logo">
+                <Image src="/Logo.svg" width={292} height={50} alt="HeavenKicks logo"/>
+            </Link>
             <h1 className="h1 auth-form-title">Sign up</h1>
             <form onSubmit={e => formHandler(e)} className="auth-form">
                 <InputField type="text" placeholder="username" name="username"/>
@@ -62,6 +67,7 @@ export default function SignUpForm() {
             </form>
             <span className="h4">or</span>
             <GoogleButton/>
+            <h4 className="h4 auth-form-link">Already have an account? <Link href="/sign-in">Sign in</Link></h4>
         </div>
     )
 }

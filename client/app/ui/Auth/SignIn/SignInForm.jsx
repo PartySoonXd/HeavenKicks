@@ -1,5 +1,8 @@
 "use client"
 
+import Link from "next/link"
+import Image from "next/image"
+
 import GoogleButton from "@/app/components/Auth/GoogleButton/GoogleButton"
 import InputField from "@/app/components/Auth/InputField/InputField"
 import { $apiHost } from "@/app/http"
@@ -29,6 +32,9 @@ export default function SignInForm() {
 
     return (
         <div className="auth-form-container">
+            <Link href="/" className="auth-form-logo">
+                <Image src="/Logo.svg" width={292} height={50} alt="HeavenKicks logo"/>
+            </Link>
             <h1 className="h1 auth-form-title">Sign in</h1>
             <form onSubmit={e => formHandler(e)} className="auth-form">
                 <InputField type="text" placeholder="email or username" name="identifier"/>
@@ -38,6 +44,7 @@ export default function SignInForm() {
             </form>
             <span className="h4">or</span>
             <GoogleButton/>
+            <h4 className="h4 auth-form-link">Not a member? <Link href="/sign-up">Sign up</Link></h4>
         </div>
     )
 }

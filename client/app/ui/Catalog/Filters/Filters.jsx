@@ -6,7 +6,7 @@ import { $apiHost } from "@/app/http"
 import CategoryGroup from "./CategoryGroup"
 import PriceFilter from "./PriceFilter"
 
-export default function Filters({}) {
+export default function Filters({isActive, setIsActive}) {
     const [categories, setCategories] = useState()
     useEffect(() => {
         const getCategories = async() => {
@@ -19,15 +19,17 @@ export default function Filters({}) {
     }, [])
 
     return (
-        <form className="filters">
-            {categories && Object.keys(categories).map(item => {
-                return <CategoryGroup 
-                    key={categories[item].id}
-                    name={categories[item].attributes.name}
-                    categories={categories[item].attributes.categories.data}
-                />
-            })}
-            <PriceFilter/>
-        </form>
+        <div className="filters-container" onClick={() => setIsActive(false)}>
+            <form className="filters" onClick={e => e.stopPropagation()}>
+                {categories && Object.keys(categories).map(item => {
+                    return <CategoryGroup 
+                        key={categories[item].id}
+                        name={categories[item].attributes.name}
+                        categories={categories[item].attributes.categories.data}
+                    />
+                })}
+                <PriceFilter/>
+            </form>
+        </div>
     )
 }

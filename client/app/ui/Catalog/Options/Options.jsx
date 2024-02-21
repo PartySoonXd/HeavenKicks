@@ -1,8 +1,9 @@
 "use client"
 
+import Image from "next/image"
 import { useState } from "react"
 
-export default function Options() {
+export default function Options({setIsActive, isActive}) {
     const [selectIsActive, setSelectIsActive] = useState(false)
     const [selectValue, setSelectValue] = useState("sort")
     const selectHandler = (value) => {
@@ -11,6 +12,13 @@ export default function Options() {
     }
     return (
         <div className="options">
+            <Image 
+                src="/filter-icon.png" 
+                width={50} height={50} 
+                alt="filters"
+                className="options-filters"
+                onClick={() => setIsActive(true)}
+            />
             <div className="options-select-container">
                 <div className={`options-select ${selectIsActive && "active"}`} onClick={() => setSelectIsActive(!selectIsActive)}>{selectValue}</div>
                 {selectIsActive && 
@@ -31,10 +39,6 @@ export default function Options() {
                     </div>
                 }
             </div>
-            {/* <select name="sort" className="options-form-select p">
-                <option className="select-option" value='yearLgToSm'>Price ↓</option>
-                <option className="select-option" value='yearSmToLg'>Price ↑</option>
-            </select> */}
             <input type="text" className="options-search p" name="search-input" placeholder="search"/>
         </div>
     )

@@ -1,5 +1,6 @@
 .filters {
     max-width: 360px;
+    min-width: 220px;
     width: 100%;
 
     margin-right: 10px;
@@ -92,6 +93,25 @@
 
                 }
             }
+        }
+        
+    }
+    @include media($s-breakpoint) {
+        width: 40%;
+        height: 100vh;
+        padding: 20px;
+        background: $secondary;
+        &-container {
+            width: 100vw;
+            height: 100vh;
+
+            top: 0;
+            left: 0;
+            position: fixed;
+
+            background: rgba(#000000, .3);
+
+            z-index: 150;
         }
     }
 }
