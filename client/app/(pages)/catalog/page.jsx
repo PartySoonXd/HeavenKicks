@@ -16,7 +16,7 @@ export default function Catalog() {
             <PageIntro title="Catalog" image="/catalog-intro.jpg"/>
             <div className="catalog-container" style={{display: "flex", margin: "30px 0 50px 0"}}>
                 <div className="left-container" style={{flexGrow: 1, position: "relative"}}>
-                    {isActive && <Filters isActive={isActive} setIsActive={setIsActive}/>}
+                    {<Filters isActive={isActive} setIsActive={setIsActive}/>}
                 </div>
                 <div className="right-container" style={{
                     maxWidth: "1025px",

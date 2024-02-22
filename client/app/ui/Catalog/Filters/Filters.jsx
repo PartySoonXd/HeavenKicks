@@ -19,7 +19,7 @@ export default function Filters({isActive, setIsActive}) {
     }, [])
 
     return (
-        <div className="filters-container" onClick={() => setIsActive(false)}>
+        <div className={`filters-container ${isActive && "active"}`} onClick={() => setIsActive(false)}>
             <form className="filters" onClick={e => e.stopPropagation()}>
                 {categories && Object.keys(categories).map(item => {
                     return <CategoryGroup 

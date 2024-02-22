@@ -102,6 +102,7 @@
         padding: 20px;
         background: $secondary;
         &-container {
+            display: none;
             width: 100vw;
             height: 100vh;
 
@@ -112,6 +113,9 @@
             background: rgba(#000000, .3);
 
             z-index: 150;
+            &.active {
+                display: block;
+            }
         }
     }
 }
