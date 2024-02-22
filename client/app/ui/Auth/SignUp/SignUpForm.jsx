@@ -9,6 +9,7 @@ import { setToken } from "@/app/lib/tokenHandler"
 import navigate from "@/app/lib/navigate"
 import InputField from "@/app/components/Auth/InputField/InputField"
 import GoogleButton from "@/app/components/Auth/GoogleButton/GoogleButton"
+import generateUUID from "@/app/lib/generateUUID"
 
 export default function SignUpForm() {
     const {user} = useUserContext()
@@ -35,6 +36,7 @@ export default function SignUpForm() {
             e.preventDefault()
             const formData = new FormData(e.currentTarget)
             const data = Object.fromEntries(formData)
+            data.uuid = generateUUID()
             if (data.password != data.confirmedPassword) {
                 console.log('passwords not equal')
                 return
