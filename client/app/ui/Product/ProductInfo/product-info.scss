@@ -76,6 +76,7 @@
         background: $primary;
 
         border-radius: 30px;
+        cursor: pointer;
     }
     &::after {
         content: "";
@@ -102,7 +103,7 @@
     @include media($s-breakpoint) {
         max-width: 100%;
 
-        margin: 20px 0;
+        margin: 20px 0 70px 0;
         padding: 0;
         &-title {
             margin-top: 20px;

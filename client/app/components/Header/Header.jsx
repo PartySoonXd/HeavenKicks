@@ -4,9 +4,8 @@ import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useUserContext } from "@/app/lib/UserContext"
-import { observer } from "mobx-react-lite"
 
-export default observer(function Header() {
+export default function Header() {
     const {user} = useUserContext()
     const [isActive, setIsActive] = useState(false)
     return (
@@ -56,4 +55,4 @@ export default observer(function Header() {
             </nav>
         </header>
     )
-})
+}
