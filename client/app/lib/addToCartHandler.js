@@ -6,7 +6,7 @@ const getProductBySlug = async(slug) => {
     console.log(data.data[0].attributes.images.data[0].attributes.formats.medium.url)
     return data.data[0]
 }
-const updateCartStore = async(id, token, user) => {
+export const updateCartStore = async(id, token, user) => {
     await $apiHost.get(`/api/carts/${id}?populate=cart_items`, {
         headers: {
             Authorization: `Bearer ${token}`
