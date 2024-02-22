@@ -20,7 +20,6 @@ export default function ProductPage({params}) {
     if (product) {
         return (
             <IndexLayout>
-
             <main className="content" >
                 <div className="product-container">
                     <ProductImages images={product.images.data}/>
