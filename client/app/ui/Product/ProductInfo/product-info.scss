@@ -59,6 +59,11 @@
 
             border: 2px solid $accent;
             border-radius: 50%;
+            cursor: pointer;
+            &.active {
+                background: $accent;
+                color: $secondary;
+            }
         }
     }
     &-button {
