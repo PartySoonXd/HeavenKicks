@@ -27,7 +27,7 @@ export default observer(function IndexLayout({children}) {
             const token = await getToken()
             if (token) {
                 try {
-                    await $apiHost.get('/api/users/me?fields=id&fields=email&fields=username&populate=cart', {
+                    await $apiHost.get('/api/users/me?fields=id&fields=email&fields=username&fields=uuid&populate=cart', {
                         headers: {
                             Authorization: `Bearer ${token.value}` 
                         }
