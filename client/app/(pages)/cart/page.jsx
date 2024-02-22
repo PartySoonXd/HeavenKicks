@@ -1,11 +1,7 @@
 "use client"
 
-import { loadStripe } from "@stripe/stripe-js"
-
 import { useUserContext } from "@/app/lib/UserContext"
 import { observer } from "mobx-react-lite"
-import { $apiHost } from "@/app/http"
-import { getToken } from "@/app/lib/tokenHandler"
 import IndexLayout from "@/app/components/IndexLayout/IndexLayout"
 import PageIntro from "@/app/components/PageIntro/PageIntro"
 import CartItems from "@/app/ui/Cart/CartItems/CartItems"
