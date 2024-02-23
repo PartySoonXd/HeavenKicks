@@ -3,7 +3,7 @@
 import { useState } from "react"
 
 export default function CategoryGroup({name, categories}) {
-    const [isActive, setIsActive] = useState(false)
+    const [isActive, setIsActive] = useState(true)
     return (
         <ul className={`category-group ${isActive && "active"}`}>
             <div className={`category-group-title ${isActive && "active"}`}>

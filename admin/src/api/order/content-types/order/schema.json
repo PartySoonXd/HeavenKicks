@@ -15,8 +15,23 @@
     "sessionId": {
       "type": "text"
     },
-    "cartId": {
-      "type": "integer"
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "completed",
+        "confirmed",
+        "pending",
+        "canceled"
+      ]
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "orders"
+    },
+    "products": {
+      "type": "json"
     }
   }
 }

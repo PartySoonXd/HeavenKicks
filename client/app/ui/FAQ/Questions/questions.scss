@@ -62,14 +62,21 @@
         padding: 20px;
 
         cursor: pointer;
+        &:hover {
+            &::before, &::after {
+                background: rgba($primary, .7);
+                transition: background .3s ease;
+            }
+        }
         &::before, &::after {
             content: "";
             width: 20px;
             height: 2px;
-
+            
             position: absolute;
-
+            
             background: $accent;
+            transition: background .3s ease;
         }
         &.active {
             &::before {

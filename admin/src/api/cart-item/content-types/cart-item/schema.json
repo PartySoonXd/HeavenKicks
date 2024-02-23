@@ -24,13 +24,13 @@
     "price": {
       "type": "integer"
     },
-    "size": {
-      "type": "decimal"
+    "imageURL": {
+      "type": "string",
+      "maxLength": 400
     },
-    "quantity": {
-      "type": "integer",
-      "default": 1,
-      "required": false
+    "size": {
+      "type": "decimal",
+      "required": true
     }
   }
 }

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_faq_component_faqs",
+  "info": {
+    "displayName": "faq"
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "text",
+      "maxLength": 500,
+      "required": true
+    },
+    "answer": {
+      "type": "text",
+      "required": true,
+      "maxLength": 1500
+    }
+  }
+}

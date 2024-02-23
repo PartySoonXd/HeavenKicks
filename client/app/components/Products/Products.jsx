@@ -4,29 +4,42 @@ import { useState, useEffect } from "react"
 
 import ProductCard from "@/app/components/ProductCard/ProductCard"
 import { $apiHost } from "@/app/http"
+import navigate from "@/app/lib/navigate"
 
-export default function Products({filters, className}) {
+export default function Products({filters, sort="", search="", className, setPagination, page=1, pageSize=16, newArrival="", brand=""}) {
     const [products, setProducts] = useState()
+    
     useEffect(() => {
         const getProducts = async() => {
-            await $apiHost.get("/api/products?fields[0]=title&fields[1]=price&fields[2]=newArrival&fields[3]=slug&populate[images][fields]=formats")
+            let values = []
+            if(filters && Object.keys(filters).length > 0) {
+                page = 1
+                values = Object.keys(filters)
+            }
+            if(brand) {
+                values.push(brand)
+                navigate('/catalog')
+            }
+            await $apiHost.get(`/api/products?filter=${values}&sort=${sort}&search=${search}&page=${page}&pageSize=${pageSize}&newArrival=${newArrival}`)
             .then(({data}) => {
-                setProducts(data.data)
+                setProducts(data.entries.results)
+                setPagination(data.entries.pagination)
             })
         }
         getProducts()
-    }, [])
+    }, [filters, sort, search, page])
+    
     return (
         <ul className={`products ${className}`}>
-            {products && Object.keys(products).map(item => {
-                const product = products[item].attributes
+            {products && products.map(item => {
                 return (
                     <ProductCard 
-                        title={product.title}
-                        price={product.price}
-                        slug={product.slug}
-                        key={product.slug}
-                        image={product.images.data[0].attributes.formats.small?.url}
+                        title={item.title}
+                        price={item.price}
+                        sizes={item.sizes}
+                        slug={item.slug}
+                        key={item.slug}
+                        image={item.images[0].formats.small?.url}
                     />
                 )
             })}

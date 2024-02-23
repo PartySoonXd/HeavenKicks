@@ -15,7 +15,8 @@
     "title": {
       "type": "string",
       "required": true,
-      "maxLength": 200
+      "maxLength": 200,
+      "unique": true
     },
     "images": {
       "type": "media",
@@ -70,6 +71,10 @@
         "46"
       ],
       "customField": "plugin::multi-select.multi-select"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }

@@ -3,12 +3,14 @@
 import Image from "next/image"
 import { useState } from "react"
 
-export default function Options({setIsActive, isActive}) {
+export default function Options({setIsActive, setSort, setSearch}) {
     const [selectIsActive, setSelectIsActive] = useState(false)
     const [selectValue, setSelectValue] = useState("sort")
-    const selectHandler = (value) => {
+
+    const selectHandler = (value, sort) => {
         setSelectValue(value)
         setSelectIsActive(false)
+        setSort(sort)
     }
     return (
         <div className="options">
@@ -25,21 +27,21 @@ export default function Options({setIsActive, isActive}) {
                     <div className="options-select-dropdown">
                         <div 
                             className="options-select-dropdown-item p" 
-                            onClick={() => selectHandler("Price ↓")}
+                            onClick={() => selectHandler("Price ↓", "price:desc")}
                         >
                             Price ↓
                         </div>
                         <div 
                             className="options-select-dropdown-item p" 
                             name="fromLowToHigh" 
-                            onClick={() => selectHandler("Price ↑")}
+                            onClick={() => selectHandler("Price ↑", 'price:asc')}
                         >
                             Price ↑
                         </div>
                     </div>
                 }
             </div>
-            <input type="text" className="options-search p" name="search-input" placeholder="search"/>
+            <input type="text" className="options-search p" name="search-input" placeholder="search" onChange={(e) => setSearch(e.target.value)}/>
         </div>
     )
 }

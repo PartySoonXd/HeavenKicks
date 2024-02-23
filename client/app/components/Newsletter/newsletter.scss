@@ -42,6 +42,7 @@
         
         border: 3px solid $accent;
         border-radius: 25px;
+        caret-color: $accent;
         &::placeholder {
             color: $accent
         }
@@ -54,6 +55,13 @@
         border-radius: 25px;
 
         background: transparent;
+        cursor: pointer;
+        transition: all .4s ease;
+        &:hover, &:focus {
+            background: $primary;
+            color: $secondary;
+            transition: all .4s ease;
+        }
     }
     @include media($s-breakpoint) {
         &-container {

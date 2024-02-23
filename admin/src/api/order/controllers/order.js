@@ -11,10 +11,21 @@ module.exports = createCoreController("api::order.order",
 ({ strapi }) => ({
   async create(ctx) {
     try {
-      const { cartId } = ctx.request.body
+      const { cartId, userId, products } = ctx.request.body
+      console.log(cartId, userId, products)
       const cartItems = await strapi.entityService.findMany("api::cart-item.cart-item", {
-        cart: cartId
+        populate: {
+          cart: true
+        },
+        filters: {
+          cart: {
+            id: {
+              $eq: cartId
+            },
+          },
+        },
       })
+      console.log(cartItems)
       const lineItems = cartItems.map(item => {
         return {
           price_data: {
@@ -24,26 +35,27 @@ module.exports = createCoreController("api::order.order",
             },
             unit_amount: Math.round(item.price * 100),
           },
-          quantity: item.quantity,
+          quantity: 1
         };
       })
 
+      console.log(lineItems[0].price_data.product_data)
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         mode: "payment",
-        success_url: process.env.CLIENT_URL + "/payment/success",
-        cancel_url: process.env.CLIENT_URL + "/payment/failed",
+        success_url: process.env.CLIENT_URL + `/payment/success?session_id={CHECKOUT_SESSION_ID}&cart_id=${cartId}`,
+        cancel_url: process.env.CLIENT_URL + `/payment/failed?session_id={CHECKOUT_SESSION_ID}`,
         line_items: lineItems
       });
 
       await strapi
         .service("api::order.order")
-        .create({ data: {  cartId, sessionId: session.id } });
+        .create({ data: {  cartId, sessionId: session.id, status: "pending", user: userId, products } });
 
       return { stripeSession: session }
     } catch (error) {
       ctx.response.status = 500;
       return { error }
     }
-  }
+  },
 }))

@@ -3,9 +3,11 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { observer } from "mobx-react-lite"
+
 import { useUserContext } from "@/app/lib/UserContext"
 
-export default function Header() {
+export default observer(function Header() {
     const {user} = useUserContext()
     const [isActive, setIsActive] = useState(false)
     return (
@@ -45,9 +47,10 @@ export default function Header() {
                     :
                     <div className="separate-links">
                         <Link href="/cart" className="authenticated-link">
+                            <p className="p cart-items-counter">{user.cart.cart_items?.data.length}</p>
                             <Image src="/cart-icon.svg" width={35} height={35} alt="cart icon"/>
                         </Link>
-                        <Link href={`/profile/${user.user.uuid}`} className="authenticated-link">
+                        <Link href="/profile" className="authenticated-link">
                             <Image src="/profile-icon.svg" width={35} height={35} alt="profile icon"/>
                         </Link>
                     </div>
@@ -55,4 +58,4 @@ export default function Header() {
             </nav>
         </header>
     )
-}
+})

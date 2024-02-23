@@ -65,15 +65,23 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "subscribed": {
-      "type": "boolean",
-      "default": false
-    },
     "cart": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::cart.cart",
       "inversedBy": "user"
+    },
+    "uuid": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100,
+      "unique": true
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "user"
     }
   }
 }

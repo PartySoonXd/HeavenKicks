@@ -20,6 +20,21 @@ export default observer(function Home() {
   const authCode = searchParams.get('code')
 
   useEffect(() => {
+    const createCart = async(id, token) => {
+      await $apiHost.post("/api/carts", {
+          data: {
+              user: {
+                  connect: [id]
+              },
+          }
+      },
+      {
+          headers: {
+              Authorization: `Bearer ${token}`
+          }
+      }
+      )
+    }
     const authGoogleUser = async() => {
       try {
         const {data} = await $apiHost.post("/strapi-google-auth/user-profile", {code: authCode})
@@ -27,7 +42,7 @@ export default observer(function Home() {
         setToken(data.data.token)
         user.setIsAuth(true)
         user.setUser(data.data.user)
-
+        createCart(data.data.user.id, data.data.token)
         navigate('/')
       } catch (error) {
         console.log(error)
@@ -38,10 +53,6 @@ export default observer(function Home() {
       authGoogleUser()
     }
   }, [])
-  const logout = async () => {
-    await deleteToken()
-    user.setIsAuth(false)
-  }
   return (
     <IndexLayout>
       <main className="content">

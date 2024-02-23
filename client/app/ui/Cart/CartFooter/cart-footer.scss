@@ -17,11 +17,21 @@
             margin: 0 20px 70px 0;
 
             background: $accent;
+            transition: background .4s ease;
+            &:hover {
+                background: $primary;
+                transition: background .4s ease;
+            }
         }
         .checkout {
             width: 500px;
 
             background: $primary;
+            transition: background .4s ease;
+            &:hover {
+                background: $accent;
+                transition: background .4s ease;
+            }
         }
         .catalog, .checkout {
             height: 80px;

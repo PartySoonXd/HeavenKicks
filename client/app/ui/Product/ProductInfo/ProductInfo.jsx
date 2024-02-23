@@ -17,6 +17,12 @@ export default function ProductInfo({info}) {
 
     const buttonHandler = () => {
         try {
+            if (!user.isAuth) {
+                setTitle("Failed!")
+                setText("Please login to add to cart.")
+                setIsActive(true)
+                return
+            }
             if (!size) {
                 setTitle("Failed!")
                 setText("Plese choose size to add.")

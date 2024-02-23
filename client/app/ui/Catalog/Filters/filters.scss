@@ -138,12 +138,23 @@
         appearance: none;
         outline: none;
         cursor: pointer;
+
+        background: transparent;
+        transition: background .5s ease;
         &:checked {
             background: $accent;
             background-image: url("../../../../public/checkmark.png");
-            background-size: 80%;
+            background-size: 70%;
             background-repeat: no-repeat;
             background-position: center;
+        }
+        &:hover {
+            background: rgba($accent, .6);
+            background-image: url("../../../../public/checkmark.png");
+            background-size: 70%;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: background .3s ease;
         }
     }
     &-label {
@@ -202,6 +213,11 @@
                 padding: 20px;
         
                 cursor: pointer;
+                transition: opacity .3s ease;
+                &:hover {
+                    opacity: .8;
+                    transition: opacity .3s ease;
+                }
                 &::before, &::after {
                     content: "";
                     width: 20px;

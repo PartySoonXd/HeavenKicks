@@ -22,9 +22,10 @@ export default function CartFooter () {
             const token = await getToken()
             const cartId = user.user.cart.id
             const userId = user.user.id
+            const products = user.cart.cart_items
 
             const res = await $apiHost.post("/api/orders", {
-                cartId, userId,
+                cartId, userId, products
             }, {
                 headers: {
                     Authorization: `Bearer ${token.value}`
@@ -44,7 +45,7 @@ export default function CartFooter () {
             <h2 className="h2 cart-footer-total">Total: <span>{getTotalPrice()}$</span></h2>
             <div className="cart-footer-buttons">
                 <Link href="/catalog" className="catalog h3">CONTINUE SHOPPING</Link>
-                <button type="button" disabled={user.cart?.cart_items.data.length === 0} onClick={checkoutHandler} className="checkout h3">PROCEED TO CHECKOUT</button>
+                <button type="button" disabled={user.cart?.cart_items?.data.length === 0} onClick={checkoutHandler} className="checkout h3">PROCEED TO CHECKOUT</button>
             </div>
         </div>
     )

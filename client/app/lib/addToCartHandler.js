@@ -2,9 +2,8 @@ import { $apiHost } from "../http"
 import { getToken } from "./tokenHandler"
 
 const getProductBySlug = async(slug) => {
-    const {data} = await $apiHost.get(`/api/products?filters[slug][$eq]=${slug}&populate=images`)
-    console.log(data.data[0].attributes.images.data[0].attributes.formats.medium.url)
-    return data.data[0]
+    const {data} = await $apiHost.get(`/api/products?slug=${slug}`)
+    return data.entries.results[0]
 }
 export const updateCartStore = async(id, token, user) => {
     await $apiHost.get(`/api/carts/${id}?populate=cart_items`, {
@@ -13,19 +12,18 @@ export const updateCartStore = async(id, token, user) => {
         }
     }).then(({data}) => {
         user.setCart(data.data.attributes)
+        return true
     })
 
 }
 export const addToCartHandler = async(user, slug, size) => {
     if (!user.isAuth) {
-        console.log('Please login to add to cart')
         return
     }
     if (!size) {
-        console.log('please select your size!')
-        return
+        return false
     }
-    const {attributes} = await getProductBySlug(slug)
+    const product = await getProductBySlug(slug)
 
     const cartId = user.user.cart.id
     const token = await getToken()
@@ -34,9 +32,9 @@ export const addToCartHandler = async(user, slug, size) => {
             cart: {
                 connect: [cartId]
             },
-            title: attributes.title,
-            price: attributes.price,
-            imageURL: attributes.images.data[0].attributes.formats.medium.url,
+            title: product.title,
+            price: product.price,
+            imageURL: product.images[0].formats.medium.url,
             size
         },
     }, {

@@ -1,54 +1,76 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 
-import { useUserContext } from "@/app/lib/UserContext"
+import SizePicker from "../SizePicker/SizePicker"
 import { addToCartHandler } from "@/app/lib/addToCartHandler"
+import { useUserContext } from "@/app/lib/UserContext"
+import Notification from "../Notification/Notification"
 
-export default function ProductCard({title, price, image, slug}) {
+export default function ProductCard({title, price, image, slug, sizes}) {
     const {user} = useUserContext()
-    // const getProductBySlug = async() => {
-    //     const {data} = await $apiHost.get(`/api/products?filters[slug][$eq]=${slug}&populate=images`)
-    //     console.log(data.data[0].attributes.images.data[0].attributes.formats.medium.url)
-    //     return data.data[0]
-    // }
-    // const updateCartStore = async(id, token) => {
-    //     await $apiHost.get(`/api/carts/${id}?populate=cart_items`, {
-    //         headers: {
-    //             Authorization: `Bearer ${token}`
-    //         }
-    //     }).then(({data}) => {
-    //         user.setCart(data.data.attributes)
-    //     })
+    const [pickerActive, setPickerActive] = useState(false)
 
-    // }
-    // const addToCartHandler = async() => {
-    //     if (!user.isAuth) {
-    //         console.log('Please login to add to cart')
-    //         return
-    //     }
-    //     const {attributes} = await getProductBySlug()
+    const [notificationActive, setNotificationActive] = useState(false)
+    const [notificationTitle, setNotificationTitle] = useState("")
+    const [notificationText, setNotificationText] = useState("")
 
-    //     const cartId = user.user.cart.id
-    //     const token = await getToken()
-    //     await $apiHost.post("/api/cart-items", {
-    //         data: {
-    //             cart: {
-    //                 connect: [cartId]
-    //             },
-    //             title: attributes.title,
-    //             price: attributes.price,
-    //             imageURL: attributes.images.data[0].attributes.formats.medium.url,
-    //             size: undefined
-    //         },
-    //     }, {
-    //         headers: {
-    //             Authorization: `Bearer ${token.value}`
-    //         }
-    //     }).then(data => {
-    //         updateCartStore(user.user.cart.id, token.value)
-    //     })
-    // }
+    const buttonHandler = (size) => {
+        try {
+            if (!user.isAuth) {
+                setNotificationTitle("Error!")
+                setNotificationText("Please login to add to cart")
+                setNotificationActive(true) 
+                setPickerActive(false)
+                return
+            }
+            if (!size) {
+                setNotificationTitle("Failed!")
+                setNotificationText("Please choose size to add")
+                setNotificationActive(true)
+                return
+            }
+            const status = addToCartHandler(user, slug, size)
+            if (status) {
+                setNotificationTitle("Success!")
+                setNotificationText(`${title} added to cart`)
+                setNotificationActive(true) 
+                setPickerActive(false)
+            } else {
+                
+                
+            }
+        } catch (error) {
+            console.log(error)
+            setNotificationTitle("Failed!")
+            setNotificationText("Something wrong. Please try later")
+            setNotificationActive(true)
+            setPickerActive(false)
+        }
+    }
+    if (notificationActive) {
+        setTimeout(() => {
+            setNotificationActive(false)
+        }, 2000)
+    }
+    if (pickerActive) {
+        document.body.style.overflow = 'hidden'
+    } else {
+        document.body.style.overflow = 'auto'
+    }
+
     return (
+        <>
+        <Notification isActive={notificationActive} title={notificationTitle} text={notificationText}/>
+        {pickerActive && 
+        <SizePicker 
+            setIsActive={setPickerActive} 
+            sizes={sizes} 
+            buttonHandler={buttonHandler}
+            notificationActive={notificationActive}
+        />}
         <li className="product-card">
             <Link href={`/product/${slug}`}>
                 <img src={"http://127.0.0.1:1337" + image} alt={title} className="product-card-img"/>
@@ -56,10 +78,11 @@ export default function ProductCard({title, price, image, slug}) {
             </Link>
             <div className="product-card-footer">
                 <p className="product-card-price h3">{price}<span>$</span></p>
-                <button type="button" onClick={() => addToCartHandler(user, slug, 37)}>
+                <button type="button" onClick={() => setPickerActive(true)} className="product-card-button">
                     <Image src="/add-to-cart-icon.svg" width={40} height={40} alt="add to cart"/>
                 </button> 
             </div>
         </li>
+        </>
     )
 }

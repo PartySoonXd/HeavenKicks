@@ -1,0 +1,88 @@
+.size-picker {
+    &-container {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        justify-content: center;
+
+
+        background: rgba(#000000, .3);
+        z-index: 1000;
+    }
+    &-content {
+        display: flex;
+        flex-direction: column;
+        max-width: 600px;
+        width: 80%;
+        height: auto;
+        box-sizing: border-box;
+
+        padding: 10px;
+        margin: 0 10px;
+
+        border-radius: 30px;
+        background: $secondary;
+        .h3 {
+            text-align: center;
+        }
+    }
+    &-sizes {
+        &-list {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            margin: 5px 0 20px 0;
+        }
+        &-item {
+            display: flex;
+            width: 50px;
+            height: 50px;
+            box-sizing: border-box;
+
+            align-items: center;
+            justify-content: center;
+
+            margin: 5px;
+
+            border: 2px solid $accent;
+            border-radius: 50%;
+
+            cursor: pointer;
+            transition: background .3s ease;
+            &.active {
+                background: $accent;
+                color: $secondary;
+            }
+            &:hover {
+                background: rgba($accent, .25);
+                transition: background .3s ease;
+            }
+        }
+    }
+    &-button {
+        width: 200px;
+        height: 50px;
+
+        color: $secondary;
+        background: $accent;
+
+        margin: 0 auto;
+
+        border-radius: 25px;
+
+        cursor: pointer;
+        transition: background .3s ease;
+        &:hover {
+            background: $primary;
+            transition: background .3s ease;
+        }
+    }
+}

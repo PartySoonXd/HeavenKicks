@@ -7,6 +7,7 @@
     margin-top: 30px;
     &-logo {
         line-height: 0;
+
         &-img {
             &.mobile {
                 display: none;
@@ -26,6 +27,15 @@
         }
         &-item {
             margin: 0 20px;
+
+            .links {
+                transition: color .7s ease; 
+                &:hover {
+                    color: $accent;
+    
+                    transition: color .3s ease; 
+                }
+            }
         }
         .separate-links {
             display: flex;
@@ -46,12 +56,23 @@
                 &.sign-up-btn {
                     background: $accent;
                     color: $secondary;
+                    transition: background .6s ease;
+                    &:hover {
+                        background: $primary;
+                        transition: background .5s ease;
+                    }
                 }
                 &.sign-in-btn {
                     z-index: 0;
                     border: 2px solid $primary;
                     background: transparent;
                     color: $primary;
+                    transition: all .5s ease;
+                    &:hover {
+                        background: $primary;
+                        color: $secondary;
+                        transition: all color .3s ease;
+                    }
                 }
             }
             .authenticated-link {
@@ -59,6 +80,7 @@
                 width: 75px;
                 height: 50px;
 
+                position: relative;
                 align-items: center;
                 justify-content: center;
 
@@ -66,6 +88,28 @@
 
                 border-radius: 40px;
                 background: $accent;
+                .cart-items-counter {
+                    display: flex;
+                    width: 25px;
+                    height: 25px;
+
+                    position: absolute;
+                    align-items: center;
+                    justify-content: center;
+                    top: -5px;
+                    right: -7px;
+
+                    background: $primary;
+                    color: $secondary;
+                    border-radius: 50%;
+
+                    line-height: 25px;
+                }
+                transition: background .3s ease;
+                &:hover {
+                    background: lighten($accent, 5);
+                    transition: background .3s ease;
+                }
             }
         }
     }

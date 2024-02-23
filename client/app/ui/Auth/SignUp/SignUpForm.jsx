@@ -47,6 +47,7 @@ export default function SignUpForm() {
                 user.setUser(data.user)
                 user.setIsAuth(true)
                 createCart(data.user.id, data.jwt)
+                navigate("/")
             })
         } catch (error) {
             console.log(error)

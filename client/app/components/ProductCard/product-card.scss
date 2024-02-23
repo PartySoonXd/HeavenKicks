@@ -14,8 +14,7 @@
         align-items: center;
     }
     &-img {
-        width: 100%;
-        
+        width: 100%;   
         height: auto;
         
         margin-bottom: 5px;
@@ -60,7 +59,7 @@
         align-items: center;
         justify-content: space-between;
         
-        margin: 0 15px;
+        margin: auto 15px 0 15px;
     }
     &-price {
         line-height: 30px;
@@ -68,10 +67,16 @@
             color: $accent;
         }
     }
-    button {
-        background: transparent;
-        border: none;
-        appearance: none;
+    &-button {
+        img {
+            transition: opacity .3s ease;
+        }
+        &:hover {
+            img {
+                opacity: .7;
+                transition: opacity .3s ease;
+            }
+        }
         cursor: pointer;
     }
 }

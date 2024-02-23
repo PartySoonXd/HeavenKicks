@@ -1,0 +1,47 @@
+.pagination {
+    display: flex;
+    
+    align-items: center;
+    justify-content: flex-end;
+
+    margin-top: auto;
+    &-list {
+        display: flex;
+        flex-wrap: wrap;
+
+        align-items: center;
+        justify-content: center;
+
+        margin: 0 20px;
+    }
+    &-item {
+        display: flex;
+        
+        justify-content: center;
+
+        margin: 0 5px;
+
+        color: $accent;
+
+        align-items: center;
+        transition: color .4s ease;
+        cursor: pointer;
+        &:hover {
+            color: $primary;
+            transition: color .4s ease;
+        }
+        &.active {
+            width: 36px;
+            height: 36px;
+
+            border: 2px solid $accent;
+            border-radius: 50%;
+        }
+    }
+    button {
+        cursor: pointer;
+    }
+    .plus-arrow {
+        transform: rotateZ(180deg) translateY(20%);
+    }
+}

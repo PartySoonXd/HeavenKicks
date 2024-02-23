@@ -48,7 +48,7 @@
         &.active {
             &::after {
                 transform: scaleX(1);
-                transition: transform 3s linear;
+                transition: transform 2s linear;
             }
         }
         &::after {

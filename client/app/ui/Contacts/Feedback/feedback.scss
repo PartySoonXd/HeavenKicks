@@ -57,12 +57,18 @@
             border-radius: 25px;
             border: none;
             appearance: none;   
+            outline: none;
 
             background: $accent;
             color: $secondary;
 
             text-align: center;
-            
+            cursor: pointer;
+            transition: background .4s ease;
+            &:hover, &:focus {
+                background: $primary;
+                transition: background .4s ease;
+            }
         }
     }
     @include media($l-breakpoint) {
