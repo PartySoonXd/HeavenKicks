@@ -12,7 +12,6 @@ module.exports = createCoreController("api::order.order",
   async create(ctx) {
     try {
       const { cartId, userId, products } = ctx.request.body
-      console.log(cartId, userId, products)
       const cartItems = await strapi.entityService.findMany("api::cart-item.cart-item", {
         populate: {
           cart: true
@@ -25,7 +24,7 @@ module.exports = createCoreController("api::order.order",
           },
         },
       })
-      console.log(cartItems)
+
       const lineItems = cartItems.map(item => {
         return {
           price_data: {
@@ -39,7 +38,6 @@ module.exports = createCoreController("api::order.order",
         };
       })
 
-      console.log(lineItems[0].price_data.product_data)
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         mode: "payment",
