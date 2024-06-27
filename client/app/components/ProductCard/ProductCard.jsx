@@ -73,7 +73,7 @@ export default function ProductCard({title, price, image, slug, sizes}) {
         />}
         <li className="product-card">
             <Link href={`/product/${slug}`}>
-                <img src={"http://127.0.0.1:1337" + image} alt={title} className="product-card-img"/>
+                <img src={process.env.NEXT_PUBLIC_ASSETS_URL + image} alt={title} className="product-card-img"/>
                 <h3 className="product-card-title h4">{title}</h3>
             </Link>
             <div className="product-card-footer">
