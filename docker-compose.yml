@@ -1,0 +1,53 @@
+services:
+  client:
+      build: /client
+      container_name: nextjs
+      env_file: /client/.env.local
+      ports:
+        - 3000:3000
+      restart: on-failure
+  strapi:
+    build: /admin
+    container_name: strapi
+    image: strapi:latest
+    restart: unless-stopped
+    env_file: /admin/.env.local
+    # volumes:
+    #   - ./config:/opt/app/config
+    #   - ./src:/opt/app/src
+    #   - ./package.json:/opt/package.json
+    #   - ./yarn.lock:/opt/yarn.lock
+    #   - ./.env.local:/opt/app/.env.local
+    #   - ./public/uploads:/opt/app/public/uploads
+    ports:
+      - "1337:1337"
+    networks:
+      - strapi
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: strapiDB
+    platform: linux/amd64 #for platform error on Apple M1 chips
+    restart: unless-stopped
+    env_file: /admin/.env.local
+    image: postgres:12.0-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: HeavenKicks_DB
+    volumes:
+      - strapi-data:/var/lib/postgresql/data/ #using a volume
+
+    ports:
+      - "5432:5432"
+    networks:
+      - strapi
+
+volumes:
+  strapi-data:
+
+networks:
+  strapi:
+    name: Strapi
+    driver: bridge
