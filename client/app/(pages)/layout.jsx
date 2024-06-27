@@ -1,6 +1,7 @@
 import "@/app/styles/main.scss";
 
 import UserProvider from "../components/UserProvider/UserProvider";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "HeavenKicks",
@@ -16,9 +17,11 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;900&display=swap" rel="stylesheet"/>
       </head>
       <body>
-        <UserProvider>
-          {children}
-        </UserProvider>
+        <Suspense>
+          <UserProvider>
+            {children}
+          </UserProvider>
+        </Suspense>
       </body>
     </html>
   );
