@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 
-export default function({pagination, setCurrentPage, currentPage}) {
+export default function Pagination({pagination, setCurrentPage, currentPage}) {
     return (
         <div className="pagination">
             <button 
