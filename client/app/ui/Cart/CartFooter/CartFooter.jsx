@@ -4,6 +4,7 @@ import { loadStripe } from "@stripe/stripe-js"
 import { useUserContext } from "@/app/lib/UserContext"
 import { getToken } from "@/app/lib/tokenHandler"
 import { $apiHost } from "@/app/http"
+import PrettyButton from "@/app/components/PrettyButton/PrettyButton"
 
 export default function CartFooter () {
     const {user} = useUserContext()
@@ -41,12 +42,21 @@ export default function CartFooter () {
     }
     return (
         <div className="cart-footer">
-            
+            {user.cart?.cart_items?.data.length === 0 && 
+            <div className="cart-footer-empty">
+                <h3 className="h2">Your shopping cart is empty.</h3>
+                <PrettyButton url="/catalog" text="GO TO CATALOG"/>
+            </div>
+            }
+            {!(user.cart?.cart_items?.data.length === 0) && 
+            <>
             <h2 className="h2 cart-footer-total">Total: <span>{getTotalPrice()}$</span></h2>
             <div className="cart-footer-buttons">
                 <Link href="/catalog" className="catalog h3">CONTINUE SHOPPING</Link>
-                <button type="button" disabled={user.cart?.cart_items?.data.length === 0} onClick={checkoutHandler} className="checkout h3">PROCEED TO CHECKOUT</button>
+                <button type="button" onClick={checkoutHandler} className="checkout h3">PROCEED TO CHECKOUT</button>
             </div>
+            </>
+            }
         </div>
     )
 }
