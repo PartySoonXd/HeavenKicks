@@ -6,7 +6,7 @@ import { useUserContext } from "@/app/lib/UserContext";
 import PaymentTemplate from "@/app/ui/PaymentTemplate/PaymentTemplate";
 import { observer } from "mobx-react-lite";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { $apiHost } from "@/app/http";
 import { getToken } from "@/app/lib/tokenHandler";
 
@@ -49,8 +49,10 @@ export default observer(function PaymentSuccess() {
     }, [])
 
     return (
-        <PaymentTemplate status="Success!" component={
-            <div className="h1">You can check your order in <Link href={`/profile/${user.user.uuid}`}>profile</Link></div>
-        }/>
+        <Suspense>
+            <PaymentTemplate status="Success!" component={
+                <div className="h1">You can check your order in <Link href={`/profile`}>profile</Link></div>
+            }/>
+        </Suspense>
     )
 })
