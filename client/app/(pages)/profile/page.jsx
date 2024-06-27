@@ -8,14 +8,19 @@ import IndexLayout from "@/app/components/IndexLayout/IndexLayout"
 import PageIntro from "@/app/components/PageIntro/PageIntro"
 import navigate from "@/app/lib/navigate"
 import Orders from "@/app/ui/Profile/Orders/Orders"
-import { deleteToken } from "@/app/lib/tokenHandler"
+import { deleteToken, getToken } from "@/app/lib/tokenHandler"
+import PersonalInfo from "@/app/ui/Profile/PersonalInfo/PersonalInfo"
 
 export default observer(function ProfilePage() {
     const {user} = useUserContext()
     useEffect(() => {
-        if (!user.isAuth) {
-            navigate('/error/404')
+        const authCheck = async () => {
+            const token = await getToken()
+            if (!user.isAuth && token.value == "") {
+                navigate('/error/404')
+            }
         }
+        authCheck()
     }, [])
     const logout = async () => {
         await deleteToken()
@@ -26,12 +31,11 @@ export default observer(function ProfilePage() {
         <IndexLayout>
         <main className="content">
             <PageIntro title="Profile" image="/profile-intro.jpg"/>
-            {user.isAuth && <Orders orders={user.user.orders}/>}
-            <button 
-                type="button"
-                onClick={logout}
-                className="logout-button links"
-            >LOGOUT</button>
+            {user.isAuth && 
+            <>
+                <PersonalInfo username={user.user.username} email={user.user.email} logout={logout}/>
+                <Orders orders={user.user.orders}/>
+            </>}
         </main>
         </IndexLayout>
     )
