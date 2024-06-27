@@ -56,6 +56,18 @@
             transition: background .4s ease;
         }
     }
+    &-password-wrapper {
+        position: relative;
+        img {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+            padding: 10px;
+
+            cursor: pointer;
+        }
+    }
 }
 .auth-image {
     max-width: 900px;
