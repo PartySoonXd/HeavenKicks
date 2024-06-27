@@ -1,5 +1,7 @@
 "use client"
 
+import PrettyButton from "@/app/components/PrettyButton/PrettyButton"
+
 export default function Orders({orders}) {
     const getTotalPrice = (products) => {
         let total = 0
@@ -12,8 +14,14 @@ export default function Orders({orders}) {
     return (
         <div className="orders">
             <h2 className="h2">ORDERS</h2>
+            {orders.length == 0 && 
+            <div className="orders-no-orders">
+                <h3 className="h2">You have no orders yet.</h3>
+                <PrettyButton text="GO TO CATALOG" url="/catalog"/>
+            </div>
+            }
             <ul className="orders-list">
-                {orders && orders.map((item) => {
+                {!(orders.length == 0) && orders.map((item) => {
                     return( 
                         <li className="orders-item" key={item.sessionId}>
                             <div className="orders-item-header">
