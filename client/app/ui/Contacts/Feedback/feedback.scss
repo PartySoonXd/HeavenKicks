@@ -79,14 +79,22 @@
         &::before {
             display: none;
         }
+        &-form {
+            &-input {
+                width: 100%;
+            }   
+        }
     }
     @include media($s-breakpoint) {
         &-form {
+            max-width: 490px;
+            width: 100%;
+            display: block;
             &-input {
-                width: 250px;
+                width: 100%;
             }
             &-textarea {
-                width: 300px;
+                width: 100%;
             }
         }
     }
