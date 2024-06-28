@@ -13,7 +13,7 @@ export default function Questions() {
                     setQuestions(data.data.attributes.items)
                 })
             } catch (error) {
-                console.log(error)
+                
             }
         }
         getQuestions()
