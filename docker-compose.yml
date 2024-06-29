@@ -12,15 +12,8 @@ services:
     image: strapi:latest
     restart: unless-stopped
     env_file: /admin/.env.local
-    # volumes:
-    #   - ./config:/opt/app/config
-    #   - ./src:/opt/app/src
-    #   - ./package.json:/opt/package.json
-    #   - ./yarn.lock:/opt/yarn.lock
-    #   - ./.env.local:/opt/app/.env.local
-    #   - ./public/uploads:/opt/app/public/uploads
     ports:
-      - "1337:1337"
+      - 1337:1337
     networks:
       - strapi
     depends_on:
