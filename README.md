@@ -14,3 +14,42 @@ HeavenKicks it is the sneaker online store that was made as a portfolio project.
 - Strapi
 ### Database
 - PostgreSQL
+
+## Run locally
+1. Clone the project
+```bash
+git clone https://github.com/PartySoonXd/HeavenKicks.git
+```
+2. Go to the project directory
+```bash
+cd HeavenKicks
+```
+3. Install dependencies
+```bash
+npm install
+```
+4. Go to the client directory
+```bash
+cd client
+```
+5. Install dependencies
+```bash
+npm install
+```
+6. Rename .env.example to .env.local
+7. Go to the admin directory
+```bash
+cd admin
+```
+8. Install dependencies
+```bash
+npm install
+```
+9. Rename .env.example to .env.local
+10. Run app from root directory
+```bash
+npm run dev
+```
+After this you can open apps in your browser
+- Client - http://localhost:3000
+- Admin - http://localhost:1337/admin
