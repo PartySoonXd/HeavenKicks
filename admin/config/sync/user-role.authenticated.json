@@ -1,0 +1,73 @@
+{
+  "name": "Authenticated",
+  "description": "Default role given to authenticated user.",
+  "type": "authenticated",
+  "permissions": [
+    {
+      "action": "api::cart-item.cart-item.create"
+    },
+    {
+      "action": "api::cart-item.cart-item.find"
+    },
+    {
+      "action": "api::cart-item.cart-item.findOne"
+    },
+    {
+      "action": "api::cart-item.cart-item.update"
+    },
+    {
+      "action": "api::cart.cart.create"
+    },
+    {
+      "action": "api::cart.cart.find"
+    },
+    {
+      "action": "api::cart.cart.findOne"
+    },
+    {
+      "action": "api::cart.cart.update"
+    },
+    {
+      "action": "api::category-group.category-group.find"
+    },
+    {
+      "action": "api::category-group.category-group.findOne"
+    },
+    {
+      "action": "api::category.category.find"
+    },
+    {
+      "action": "api::category.category.findOne"
+    },
+    {
+      "action": "api::faq.faq.find"
+    },
+    {
+      "action": "api::feedback.feedback.create"
+    },
+    {
+      "action": "api::order.order.create"
+    },
+    {
+      "action": "api::order.order.find"
+    },
+    {
+      "action": "api::order.order.findOne"
+    },
+    {
+      "action": "api::order.order.update"
+    },
+    {
+      "action": "api::product.product.find"
+    },
+    {
+      "action": "api::product.product.findOne"
+    },
+    {
+      "action": "plugin::users-permissions.auth.changePassword"
+    },
+    {
+      "action": "plugin::users-permissions.user.me"
+    }
+  ]
+}
