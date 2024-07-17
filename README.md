@@ -50,6 +50,45 @@ npm install
 ```bash
 npm run dev
 ```
+11. Go to the [configuration](#configuration)
+
 After this you can open apps in your browser
 - Client - http://localhost:3000
 - Admin - http://localhost:1337/admin
+
+## Run with docker
+***You need to have docker on your computer***
+1. Go to the app directory
+```bash
+cd app
+```
+2. Rename .env.example to .env.local
+3. Go to the admin directory
+```bash
+cd admin
+```
+4. Rename .env.example to .env.local
+5. Run docker-compose from root directory
+```bash
+docker-compose up
+```
+6. Go to the [configuration](#configuration)
+
+After this you can open apps in your browser
+- Client - http://localhost:3000
+- Admin - http://localhost:1337/admin
+
+## Configuration
+1. Open `admin/.env.local` and complete required variables
+2. Open `client/.env.local` and complete required variables
+3. Go to http://localhost:1337/admin and create new user
+4. Open Google Auth plugin on home page of admin panel and configure
+    - Create a google project from the [Google Cloud Console](https://console.cloud.google.com/projectcreate?previousPage=%2Fcloud-resource-manager%3Fproject%3D%26folder%3D%26organizationId%3D).
+    - Create OAuth Consent Screen (Nav Menu -> APIs & Services -> [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent)).
+    - Go to [Credentials](https://console.cloud.google.com/apis/credentials), click create credentials -> OAuth Client ID
+    - Input the CLIENT_ID, CLIENT_SECRET, REDIRECT URL & the Scopes in the plugin page of Strapi, and save it.
+### Just for docker
+1. In `admin/.env.local` change value of ```DATABASE_HOST``` variable into ```postgres``` and ```@localhost``` in ```DATABASE_URL``` into ```@postgres```
+
+## Feedback
+Vladislav Belomestnykh - vladislav.webdeveloper@gmail.com
