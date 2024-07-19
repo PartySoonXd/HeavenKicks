@@ -1,4 +1,4 @@
-<img alt="HistArts logo" src="https://raw.githubusercontent.com/PartySoonXd/HeavenKicks/master/client/public/Logo.svg?token=GHSAT0AAAAAACUAU2JF23DCUTIKXFRSDJBEZUXIYYQ">
+<img alt="HeavenKicks logo" src="https://raw.githubusercontent.com/PartySoonXd/HeavenKicks/master/client/public/Logo.svg?token=GHSAT0AAAAAACUAU2JE7NJQ2LETOOA34L5AZU2J7SQ">
 
 ## Description
 HeavenKicks it is the sneaker online store that was made as a portfolio project. Here you can find a lot of sneakers from different brands. This website is created for people who want to buy sneakers for everyday wear or looking for some rare collectable pairs. After finishing this project I learned to work with **Strapi CMS**, **Stripe API** and **Google auth**.
