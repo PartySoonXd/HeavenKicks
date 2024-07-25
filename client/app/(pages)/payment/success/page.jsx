@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 
-import { useUserContext } from "@/app/lib/UserContext";
 import PaymentTemplate from "@/app/ui/PaymentTemplate/PaymentTemplate";
 import { observer } from "mobx-react-lite";
 import { useSearchParams } from "next/navigation";
@@ -11,9 +10,7 @@ import { $apiHost } from "@/app/http";
 import { getToken } from "@/app/lib/tokenHandler";
 
 export default observer(function PaymentSuccess() {
-    const {user} = useUserContext()
     const params = useSearchParams()
-    
     
     useEffect(() => {
         const updateData = async () => {
@@ -35,14 +32,18 @@ export default observer(function PaymentSuccess() {
                 const cart = await $apiHost.get(`/api/carts/${cartId}?populate=cart_items`, {
                     headers: {Authorization: `Bearer ${token.value}`}
                 })
-                cart.data.data.attributes.cart_items.data.map(async (item) => {
-                    await $apiHost.delete(`/api/cart-items/${item.id}`,  {
-                        headers: {Authorization: `Bearer ${token.value}`}
+                if (cart.data.data.attributes.cart_items.data.length != 0) {
+                    cart.data.data.attributes.cart_items.data.map(async (item) => {
+                        await $apiHost.delete(`/api/cart-items/${item.id}`,  {
+                            headers: {Authorization: `Bearer ${token.value}`}
+                        }).catch(error => {
+                            return error
+                        })
                     })
-                })
+                } 
             }   
             catch (error) {
-                console.log(error)
+                return error
             }
         }
         updateData()
