@@ -73,18 +73,22 @@ docker-compose up
 6. Go to the [configuration](#configuration)
 
 After this you can open apps in your browser
-- Client - http://localhost:3000
+- Client - http://127.0.0.1:3000
 - Admin - http://localhost:1337/admin
 
 ## Configuration
-1. Open `admin/.env.local` and complete required variables
-2. Open `client/.env.local` and complete required variables
-3. Go to http://localhost:1337/admin and create new user
-4. Open Google Auth plugin on home page of admin panel and configure
+1. Install [postgreSQL](https://www.postgresql.org/download/) on your computer
+    - In process of installation you need to set password(default: root) ***similar with values in `admin/.env.local`***
+2. Create database with name(default: HeavenKicks_DB) ***similar with value in `admin/.env.local`***
+3. Open `admin/.env.local` and complete required variables
+4. Open `client/.env.local` and complete required variables
+5. Go to http://localhost:1337/admin and create new user
+6. Go to settings -> Config Sync(Interface) and click on Import button
+7. Open Google Auth plugin on home page of admin panel and configure
     - Create a google project from the [Google Cloud Console](https://console.cloud.google.com/projectcreate?previousPage=%2Fcloud-resource-manager%3Fproject%3D%26folder%3D%26organizationId%3D).
     - Create OAuth Consent Screen (Nav Menu -> APIs & Services -> [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent)).
     - Go to [Credentials](https://console.cloud.google.com/apis/credentials), click create credentials -> OAuth Client ID
-    - Input the CLIENT_ID, CLIENT_SECRET, REDIRECT URL & the Scopes in the plugin page of Strapi, and save it.
+    - Input the CLIENT_ID, CLIENT_SECRET, REDIRECT URL & the Scopes in the plugin page of Strapi, and save it
 ### Just for docker
 1. In `admin/.env.local` change value of ```DATABASE_HOST``` variable into ```postgres``` and ```@localhost``` in ```DATABASE_URL``` into ```@postgres```
 
