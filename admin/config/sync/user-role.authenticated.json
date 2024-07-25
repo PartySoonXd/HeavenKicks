@@ -7,6 +7,9 @@
       "action": "api::cart-item.cart-item.create"
     },
     {
+      "action": "api::cart-item.cart-item.delete"
+    },
+    {
       "action": "api::cart-item.cart-item.find"
     },
     {
@@ -67,7 +70,16 @@
       "action": "plugin::users-permissions.auth.changePassword"
     },
     {
+      "action": "plugin::users-permissions.auth.connect"
+    },
+    {
+      "action": "plugin::users-permissions.user.find"
+    },
+    {
       "action": "plugin::users-permissions.user.me"
+    },
+    {
+      "action": "plugin::users-permissions.user.update"
     }
   ]
 }
