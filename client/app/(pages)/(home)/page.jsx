@@ -7,7 +7,7 @@ import { observer } from "mobx-react-lite";
 import { useUserContext } from "@/app/lib/UserContext";
 import navigate from "@/app/lib/navigate";
 import { $apiHost } from "@/app/http";
-import {deleteToken, setToken} from "@/app/lib/tokenHandler";
+import { setToken } from "@/app/lib/tokenHandler";
 import PageIntro from "@/app/components/PageIntro/PageIntro";
 import NewArrivals from "@/app/ui/Home/NewArrivals/NewArrivals";
 import Brands from "@/app/ui/Home/Brands/Brands";

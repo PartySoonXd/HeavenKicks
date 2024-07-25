@@ -13,8 +13,10 @@ export default observer(function PaymentTemplate({status, component}) {
     useEffect(() => {
         const authUser = async() => {
             const token = await getToken()
-            await $apiHost.get("/api/users/me", {headers: 
-                {Authorization: `Bearer ${token.value}`}
+            await $apiHost.get("/api/users/me", {   
+                headers: {
+                    Authorization: `Bearer ${token.value}`
+                }
             }).then(({data}) => {
                 user.setUser(data)
                 user.setIsAuth(true)
