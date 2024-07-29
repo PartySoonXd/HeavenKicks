@@ -26,29 +26,13 @@ cd HeavenKicks
 ```bash
 npm install
 ```
-4. Go to the client directory
+4. Install dependencies for applications
 ```bash
-cd client
+npm run deps
 ```
-5. Install dependencies
-```bash
-npm install
-```
-6. Rename .env.example to .env.local
-7. Go to the admin directory
-```bash
-cd admin
-```
-8. Install dependencies
-```bash
-npm install
-```
-9. Rename .env.example to .env.local
-10. Run app from root directory
-```bash
-npm run dev
-```
-11. Go to the [configuration](#configuration)
+5. Go to the `client` directory and rename **.env.example** to **.env.local**
+6. Go to the `admin` directory and rename **.env.example** to **.env.local**
+7. Go to the [configuration](#configuration)
 
 After this you can open apps in your browser
 - Client - http://localhost:3000
@@ -56,16 +40,13 @@ After this you can open apps in your browser
 
 ## Run with docker
 ***You need to have docker on your computer***
-1. Go to the app directory
+1. Clone the project
 ```bash
-cd app
+git clone https://github.com/PartySoonXd/HeavenKicks.git
 ```
-2. Rename .env.example to .env.local
-3. Go to the admin directory
-```bash
-cd admin
-```
-4. Rename .env.example to .env.local
+2. Go to the `client` directory and rename **.env.example** to **.env.local**
+3. Go to the `admin` directory and rename **.env.example** to **.env.local**
+4. In `admin/.env.local` change value of ```DATABASE_HOST``` variable into ```postgres``` and ```@localhost``` in ```DATABASE_URL``` into ```@postgres```
 5. Run docker-compose from root directory
 ```bash
 docker-compose up
@@ -77,20 +58,27 @@ After this you can open apps in your browser
 - Admin - http://localhost:1337/admin
 
 ## Configuration
+### Locally
 1. Install [postgreSQL](https://www.postgresql.org/download/) on your computer
     - In process of installation you need to set password(default: root) ***similar with values in `admin/.env.local`***
-2. Create database with name(default: HeavenKicks_DB) ***similar with value in `admin/.env.local`***
-3. Open `admin/.env.local` and complete required variables
-4. Open `client/.env.local` and complete required variables
-5. Go to http://localhost:1337/admin and create new user
-6. Go to settings -> Config Sync(Interface) and click on Import button
-7. Open Google Auth plugin on home page of admin panel and configure
+2. Init database from root directory
+```bash
+npm run db
+```
+3. Run apps from root directory
+```bash
+npm run dev
+```
+##
+1. Open `admin/.env.local` and complete required variables
+2. Open `client/.env.local` and complete required variables
+3. Go to http://localhost:1337/admin and create new user
+4. Go to settings -> Config Sync(Interface) and click on Import button
+5. Open Google Auth plugin on home page of admin panel and configure
     - Create a google project from the [Google Cloud Console](https://console.cloud.google.com/projectcreate?previousPage=%2Fcloud-resource-manager%3Fproject%3D%26folder%3D%26organizationId%3D).
     - Create OAuth Consent Screen (Nav Menu -> APIs & Services -> [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent)).
     - Go to [Credentials](https://console.cloud.google.com/apis/credentials), click create credentials -> OAuth Client ID
     - Input the CLIENT_ID, CLIENT_SECRET, REDIRECT URL & the Scopes in the plugin page of Strapi, and save it
-### Just for docker
-1. In `admin/.env.local` change value of ```DATABASE_HOST``` variable into ```postgres``` and ```@localhost``` in ```DATABASE_URL``` into ```@postgres```
 
 ## Feedback
 Vladislav Belomestnykh - vladislav.webdeveloper@gmail.com
