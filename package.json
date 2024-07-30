@@ -4,6 +4,8 @@
   "description": "HeavenKicks sneaker shop",
   "main": "index.js",
   "scripts": {
+    "db": "cd admin & npm run db",
+    "deps": "concurrently \"cd client & npm install\" \"cd admin & npm install\"",
     "admin": "cd admin & npm run dev",
     "client": "cd client & npm run dev",
     "dev": "concurrently \"npm run client\" \"npm run admin\""
