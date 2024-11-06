@@ -1145,7 +1145,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
           '46'
         ]
       >;
-    slug: Attribute.UID<'api::product.product', 'title'>;
+    slug: Attribute.UID<'api::product.product', 'title'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
