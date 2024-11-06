@@ -1,0 +1,10 @@
+.warning {
+    padding: 10px;
+
+    background: $accent;
+    &-text {
+        text-align: center;
+        
+        color: $secondary;
+    }
+}
