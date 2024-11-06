@@ -12,12 +12,17 @@ export default function ProductPage({params}) {
     
     useEffect(() => {
         const getProduct = async() => {
-            await $apiHost.get(`/api/products?slug=${params.slug}&populate=*`).then(({data}) => {
-                if(data.entries.results.length === 0) {
+            try {
+                await $apiHost.get(`/api/products/${params.slug}`).then(({data}) => {
+                    setProduct(data.data.attributes)
+                })
+            } catch (error) {
+                if (error.response.status === 404) {
                     navigate("/error/404")
+                } else {
+                    navigate("/error/500")
                 }
-                setProduct(data.entries.results[0])
-            })
+            }
         }
         getProduct()
     }, [])
@@ -25,8 +30,8 @@ export default function ProductPage({params}) {
         return (
             <IndexLayout>
             <main className="content" >
-                <div className="product-container">
-                    <ProductImages images={product.images}/>
+                <div className="product-container" style={{marginBottom: "50px"}}>
+                    <ProductImages images={product.images.data}/>
                     <ProductInfo info={product}/>
                 </div>
             </main>
