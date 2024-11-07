@@ -95,6 +95,14 @@
         }
         h1 {
             margin: 0;
+
+            text-align: center;
         }
+    }
+    @include media($xs-breakpoint) {
+        margin-left: -15px;
+        margin-right: -15px;
+
+        border-radius: 0px;
     }
 }

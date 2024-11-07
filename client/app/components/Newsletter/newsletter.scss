@@ -74,6 +74,9 @@
     }
     @include media($xs-breakpoint) {
         &-container {
+            border-radius: 0;
+            
+            margin: 0 -15px;
             form {
                 display: flex;
 
