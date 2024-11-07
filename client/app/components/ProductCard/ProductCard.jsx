@@ -62,7 +62,6 @@ export default function ProductCard({title, price, image, slug, sizes}) {
     }
 
     return (
-        <>
         <li className="product-card">
             <Notification isActive={notificationActive} title={notificationTitle} text={notificationText}/>
             {pickerActive && 
@@ -83,6 +82,5 @@ export default function ProductCard({title, price, image, slug, sizes}) {
                 </button> 
             </div>
         </li>
-        </>
     )
 }
