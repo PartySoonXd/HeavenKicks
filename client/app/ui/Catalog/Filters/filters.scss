@@ -140,21 +140,13 @@
         cursor: pointer;
 
         background: transparent;
-        transition: background .5s ease;
+        transition: background .2s ease;
         &:checked {
             background: $accent;
             background-image: url("../../../../public/checkmark.png");
             background-size: 70%;
             background-repeat: no-repeat;
             background-position: center;
-        }
-        &:hover {
-            background: rgba($accent, .6);
-            background-image: url("../../../../public/checkmark.png");
-            background-size: 70%;
-            background-repeat: no-repeat;
-            background-position: center;
-            transition: background .3s ease;
         }
     }
     &-label {
@@ -238,5 +230,4 @@
             }
         }
     }
-    
 }
