@@ -29,20 +29,26 @@ export default function Products({filters, sort="", search="", className, setPag
         getProducts()
     }, [filters, sort, search, page])
     
-    return (
-        <ul className={`products ${className}`}>
-            {products && products.map(item => {
-                return (
-                    <ProductCard 
-                        title={item.title}
-                        price={item.price}
-                        sizes={item.sizes}
-                        slug={item.slug}
-                        key={item.slug}
-                        image={item.images[0].formats.small?.url}
-                    />
-                )
-            })}
-        </ul>
-    )
+    if(products.length > 0) {
+        return (
+            <ul className={`products ${className}`}>
+                {products && products.map(item => {
+                    return (
+                        <ProductCard 
+                            title={item.title}
+                            price={item.price}
+                            sizes={item.sizes}
+                            slug={item.slug}
+                            key={item.slug}
+                            image={item.images[0].formats.small?.url}
+                        />
+                    )
+                })}
+            </ul>
+        )
+    } else {
+        return (
+            <h2 className="h2" style={{textAlign: "center", margin: "auto"}}>No results found</h2>
+        )
+    }
 }
