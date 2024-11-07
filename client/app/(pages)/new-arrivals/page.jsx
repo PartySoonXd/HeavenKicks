@@ -13,7 +13,7 @@ export default function NewArrivals() {
     return (
         <IndexLayout>
         <main className="content">
-            <PageIntro title="New arrivals" image="/new-arrivals-intro.jpg"/>
+            <PageIntro title="New arrivals" image="/new-arrivals-intro.webp"/>
             <div className="new-arrivals-container" style={{margin: "30px 0 40px 0"}}>
                 <Products setPagination={setPagination} pageSize={40} newArrival={true}/>
             </div>

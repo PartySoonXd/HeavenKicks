@@ -13,7 +13,7 @@ export default function SignUp() {
             >
                 <SignUpForm/>
                 <Image 
-                    src="/sign-up-photo.jpg" 
+                    src="/sign-up-photo.webp" 
                     width={919} 
                     height={900} 
                     alt="sign up photo"

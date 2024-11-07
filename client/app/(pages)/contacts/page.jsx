@@ -7,7 +7,7 @@ export default function Contacts() {
     return (
         <IndexLayout>
         <main className="content">
-            <PageIntro title="Contacts" image="/contacts-intro.jpg"/> 
+            <PageIntro title="Contacts" image="/contacts-intro.webp"/> 
             <div className="contacts-container" 
                 style={{
                     marginTop: "30px",

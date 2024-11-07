@@ -58,7 +58,7 @@ export default observer(function Home() {
       <main className="content">
         <PageIntro 
           title={<>Step into Sneaker Heaven with <span>Heaven</span>Kicks!</>}
-          image="/home-intro.jpg"
+          image="/home-intro.webp"
           className=" home"
         />
         <NewArrivals/>

@@ -13,7 +13,7 @@ export default function SignIn() {
             >
                 <SignInForm/>
                 <Image
-                    src="/sign-in-photo.jpg" 
+                    src="/sign-in-photo.webp" 
                     width={919} 
                     height={900} 
                     alt="sign in photo"

@@ -13,7 +13,7 @@ export default observer(function Cart() {
     return (
         <IndexLayout>
             <main className="content">
-                <PageIntro title="Cart" image="/cart-intro.jpg"/>
+                <PageIntro title="Cart" image="/cart-intro.webp"/>
                 <CartItems items={user.cart.cart_items}/>
                 <CartFooter/>
             </main>

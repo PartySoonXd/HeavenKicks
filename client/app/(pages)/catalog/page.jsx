@@ -24,7 +24,7 @@ export default function Catalog() {
     return (
         <IndexLayout>
         <main className="content">
-            <PageIntro title="Catalog" image="/catalog-intro.jpg"/>
+            <PageIntro title="Catalog" image="/catalog-intro.webp"/>
             <div className="catalog-container" style={{display: "flex", margin: "30px 0 50px 0"}}>
                 <div className="left-container" style={{flexGrow: 1, position: "relative"}}>
                     {<Filters isActive={isActive} setIsActive={setIsActive} setFilters={setFilters}/>}

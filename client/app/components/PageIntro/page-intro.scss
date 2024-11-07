@@ -11,13 +11,13 @@
     border-radius: 50px;
 
     background: $primary;
-    background-image: url("../../../public/intro-bg-small.png");
+    background-image: url("../../../public/intro-bg-small.webp");
     background-position-y: center;
     background-repeat: no-repeat;   
 
     &.home {
         height: 400px;
-        background-image: url("../../../public/intro-bg-big.png");
+        background-image: url("../../../public/intro-bg-big.webp");
         img {
             height: 400px;
             object-fit: cover;

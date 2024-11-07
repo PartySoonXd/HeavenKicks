@@ -30,7 +30,7 @@ export default observer(function ProfilePage() {
     return (
         <IndexLayout>
         <main className="content">
-            <PageIntro title="Profile" image="/profile-intro.jpg"/>
+            <PageIntro title="Profile" image="/profile-intro.webp"/>
             {user.isAuth && 
             <>
                 <PersonalInfo username={user.user.username} email={user.user.email} logout={logout}/>
