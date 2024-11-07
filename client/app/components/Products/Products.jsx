@@ -29,7 +29,7 @@ export default function Products({filters, sort="", search="", className, setPag
         getProducts()
     }, [filters, sort, search, page])
     
-    if(products.length > 0) {
+    if(products?.length > 0) {
         return (
             <ul className={`products ${className}`}>
                 {products && products.map(item => {
