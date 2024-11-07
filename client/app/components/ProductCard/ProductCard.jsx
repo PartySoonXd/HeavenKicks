@@ -63,15 +63,15 @@ export default function ProductCard({title, price, image, slug, sizes}) {
 
     return (
         <>
-        <Notification isActive={notificationActive} title={notificationTitle} text={notificationText}/>
-        {pickerActive && 
-        <SizePicker 
-            setIsActive={setPickerActive} 
-            sizes={sizes} 
-            buttonHandler={buttonHandler}
-            notificationActive={notificationActive}
-        />}
         <li className="product-card">
+            <Notification isActive={notificationActive} title={notificationTitle} text={notificationText}/>
+            {pickerActive && 
+            <SizePicker 
+                setIsActive={setPickerActive} 
+                sizes={sizes} 
+                buttonHandler={buttonHandler}
+                notificationActive={notificationActive}
+            />}
             <Link href={`/product/${slug}`}>
                 <img src={process.env.NEXT_PUBLIC_ASSETS_URL + image} alt={title} className="product-card-img"/>
                 <h3 className="product-card-title h4">{title}</h3>
