@@ -11,20 +11,24 @@ export default function Products({filters, sort="", search="", className, setPag
     
     useEffect(() => {
         const getProducts = async() => {
-            let values = []
-            if(filters && Object.keys(filters).length > 0) {
-                page = 1
-                values = Object.keys(filters)
+            try {
+                let values = []
+                if(filters && Object.keys(filters).length > 0) {
+                    page = 1
+                    values = Object.keys(filters)
+                }
+                if(brand) {
+                    values.push(brand)
+                    navigate('/catalog')
+                }
+                await $apiHost.get(`/api/products?filter=${values}&sort=${sort}&search=${search}&page=${page}&pageSize=${pageSize}&newArrival=${newArrival}`)
+                .then(({data}) => {
+                    setProducts(data.entries.results)
+                    setPagination(data.entries.pagination)
+                })                
+            } catch (error) {
+                
             }
-            if(brand) {
-                values.push(brand)
-                navigate('/catalog')
-            }
-            await $apiHost.get(`/api/products?filter=${values}&sort=${sort}&search=${search}&page=${page}&pageSize=${pageSize}&newArrival=${newArrival}`)
-            .then(({data}) => {
-                setProducts(data.entries.results)
-                setPagination(data.entries.pagination)
-            })
         }
         getProducts()
     }, [filters, sort, search, page])
