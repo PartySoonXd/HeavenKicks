@@ -9,8 +9,8 @@ export default function Questions() {
     useEffect(() => {
         const getQuestions = async() => {
             try {
-                await $apiHost.get('/api/faq?populate=items').then(({data}) => {
-                    setQuestions(data.data.attributes.items)
+                await $apiHost.get('/api/faqs').then(({data}) => {
+                    setQuestions(data.data)
                 })
             } catch (error) {
                 
@@ -23,7 +23,7 @@ export default function Questions() {
             {
                 questions && Object.keys(questions).map(item => {
                     return (
-                        <Question question={questions[item].question} answer={questions[item].answer} key={item}/>
+                        <Question question={questions[item].attributes.question} answer={questions[item].attributes.answer} key={item}/>
                     )
                 })
             }
