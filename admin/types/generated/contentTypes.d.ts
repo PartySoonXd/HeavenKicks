@@ -846,7 +846,6 @@ export interface ApiBrandCardBrandCard extends Schema.CollectionType {
     singularName: 'brand-card';
     pluralName: 'brand-cards';
     displayName: 'Brand card';
-    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1032,7 +1031,6 @@ export interface ApiFaqFaq extends Schema.CollectionType {
     singularName: 'faq';
     pluralName: 'faqs';
     displayName: 'Faq';
-    description: '';
   };
   options: {
     draftAndPublish: true;

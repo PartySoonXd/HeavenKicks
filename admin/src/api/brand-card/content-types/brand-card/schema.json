@@ -4,8 +4,7 @@
   "info": {
     "singularName": "brand-card",
     "pluralName": "brand-cards",
-    "displayName": "Brand card",
-    "description": ""
+    "displayName": "Brand card"
   },
   "options": {
     "draftAndPublish": true
@@ -13,20 +12,20 @@
   "pluginOptions": {},
   "attributes": {
     "logo": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     },
     "sneaker": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     },
     "category": {
       "type": "relation",
