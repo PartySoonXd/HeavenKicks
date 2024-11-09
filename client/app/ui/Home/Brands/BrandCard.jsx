@@ -1,18 +1,26 @@
 import Image from "next/image"
 import Link from "next/link"
 
-export default function BrandCard({url, brand}) {
+export default function BrandCard({item}) {
     return (
-        <Link href={url} className="brand-card">
+        <Link href={`/catalog?brand=${item.attributes.category.data.attributes.name}`} className="brand-card">
             <div className="left-side">
-                <img src={`/logos/${brand}.png`} alt={`${brand} logo`}/>
+                <img 
+                    src={process.env.NEXT_PUBLIC_ASSETS_URL + item.attributes.logo.data.attributes.url} 
+                    alt={`${item.attributes.category.data.attributes.name} logo`}
+                />
                 <div className="see-all">
                     <div className="see-all-text links">See all</div>
                     <span className="see-all-line"></span>
                 </div>
             </div>
             <div className="right-side">
-                <Image src={`/kicks-photos/${brand}.jpg`} width={220} height={200} alt={`${brand} sneakers`}/>
+                <img 
+                    src={process.env.NEXT_PUBLIC_ASSETS_URL + item.attributes.sneaker.data.attributes.url} 
+                    width={220} 
+                    height={200} 
+                    alt={`${item.attributes.category.data.attributes.name} sneakers`}
+                />
             </div>
         </Link>
     )
