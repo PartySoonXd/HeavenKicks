@@ -840,6 +840,43 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBrandCardBrandCard extends Schema.CollectionType {
+  collectionName: 'brand_cards';
+  info: {
+    singularName: 'brand-card';
+    pluralName: 'brand-cards';
+    displayName: 'Brand card';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    logo: Attribute.Media & Attribute.Required;
+    sneaker: Attribute.Media & Attribute.Required;
+    category: Attribute.Relation<
+      'api::brand-card.brand-card',
+      'oneToOne',
+      'api::category.category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::brand-card.brand-card',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::brand-card.brand-card',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCartCart extends Schema.CollectionType {
   collectionName: 'carts';
   info: {
@@ -958,7 +995,7 @@ export interface ApiCategoryGroupCategoryGroup extends Schema.CollectionType {
   info: {
     singularName: 'category-group';
     pluralName: 'category-groups';
-    displayName: 'categoryGroup';
+    displayName: 'category group';
     description: '';
   };
   options: {
@@ -989,19 +1026,28 @@ export interface ApiCategoryGroupCategoryGroup extends Schema.CollectionType {
   };
 }
 
-export interface ApiFaqFaq extends Schema.SingleType {
+export interface ApiFaqFaq extends Schema.CollectionType {
   collectionName: 'faqs';
   info: {
     singularName: 'faq';
     pluralName: 'faqs';
-    displayName: 'faq';
+    displayName: 'Faq';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    items: Attribute.Component<'faq-component.faq', true>;
+    question: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 2000;
+      }>;
+    answer: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 2000;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1213,6 +1259,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::brand-card.brand-card': ApiBrandCardBrandCard;
       'api::cart.cart': ApiCartCart;
       'api::cart-item.cart-item': ApiCartItemCartItem;
       'api::category.category': ApiCategoryCategory;
