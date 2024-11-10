@@ -1719,6 +1719,23 @@
   resolved "https://registry.npmjs.org/@strapi/provider-audit-logs-local/-/provider-audit-logs-local-4.19.1.tgz"
   integrity sha512-BL4mdCMKozraz2EWtV8cAFjQh/brJ3b8wALDjwlbp1GJTb3qR1sU7B2Aw2QlnWSfSHduSn2aioprPt0yDsbEWg==
 
+"@strapi/provider-email-gmail-api@npm:@bztes/strapi-provider-email-gmail-api@^4.0.3":
+  version "4.0.3"
+  resolved "https://registry.npmjs.org/@bztes/strapi-provider-email-gmail-api/-/strapi-provider-email-gmail-api-4.0.3.tgz"
+  integrity sha512-yrgRRiKJym9XOu9w0VqtpoWPi4MW1rBtz7sjySfiCsn63GjisdUzjq8L4a1ztDUqnLrKRZ5yjh7ktsibXjHxKw==
+  dependencies:
+    "@strapi/utils" "^4.11.4"
+    googleapis "^121.0.0"
+    nodemailer "^6.9.3"
+
+"@strapi/provider-email-nodemailer@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.npmjs.org/@strapi/provider-email-nodemailer/-/provider-email-nodemailer-5.3.0.tgz"
+  integrity sha512-oTeUt7OVeNL+GUiHHU8w4j+8WkKCyJnsnqGCkpxQzaXQm80vUi+FzWTbpjZ4AGh0JDeCexLaHc++FEmAE02UBg==
+  dependencies:
+    lodash "4.17.21"
+    nodemailer "6.9.1"
+
 "@strapi/provider-email-sendmail@4.19.1":
   version "4.19.1"
   resolved "https://registry.npmjs.org/@strapi/provider-email-sendmail/-/provider-email-sendmail-4.19.1.tgz"
@@ -1863,7 +1880,7 @@
     aria-hidden "^1.2.4"
     react-remove-scroll "^2.5.9"
 
-"@strapi/utils@4.19.1":
+"@strapi/utils@^4.11.4", "@strapi/utils@4.19.1":
   version "4.19.1"
   resolved "https://registry.npmjs.org/@strapi/utils/-/utils-4.19.1.tgz"
   integrity sha512-BOLMAA9kUKsP6roiD5Xh+2xHY3b36cQ1Uai4uMZj+NBb17FJvP3Zbo4Bbbho5U24eC8tqUg3CDCzYq9exLDslw==
@@ -4926,6 +4943,18 @@ googleapis-common@^5.0.2:
     url-template "^2.0.8"
     uuid "^8.0.0"
 
+googleapis-common@^6.0.0:
+  version "6.0.4"
+  resolved "https://registry.npmjs.org/googleapis-common/-/googleapis-common-6.0.4.tgz"
+  integrity sha512-m4ErxGE8unR1z0VajT6AYk3s6a9gIMM6EkDZfkPnES8joeOlEtFEJeF8IyZkb0tjPXkktUfYrE4b3Li1DNyOwA==
+  dependencies:
+    extend "^3.0.2"
+    gaxios "^5.0.1"
+    google-auth-library "^8.0.2"
+    qs "^6.7.0"
+    url-template "^2.0.8"
+    uuid "^9.0.0"
+
 googleapis@^100.0.0:
   version "100.0.0"
   resolved "https://registry.npmjs.org/googleapis/-/googleapis-100.0.0.tgz"
@@ -4933,6 +4962,14 @@ googleapis@^100.0.0:
   dependencies:
     google-auth-library "^7.0.2"
     googleapis-common "^5.0.2"
+
+googleapis@^121.0.0:
+  version "121.0.0"
+  resolved "https://registry.npmjs.org/googleapis/-/googleapis-121.0.0.tgz"
+  integrity sha512-tL39TCmAHwee7Irw15pBHUPp39Pz7K2+yOq2YbOgzY8ZDTukL+fuQdNoAINQkyXKFTzORTE+uoi6IuyrlS1njQ==
+  dependencies:
+    google-auth-library "^8.0.2"
+    googleapis-common "^6.0.0"
 
 gopd@^1.0.1:
   version "1.0.1"
@@ -6915,6 +6952,16 @@ nodemailer-shared@1.1.0:
   integrity sha512-68xW5LSyPWv8R0GLm6veAvm7E+XFXkVgvE3FW0FGxNMMZqMkPFeGDVALfR1DPdSfcoO36PnW7q5AAOgFImEZGg==
   dependencies:
     nodemailer-fetch "1.6.0"
+
+nodemailer@^6.9.3:
+  version "6.9.16"
+  resolved "https://registry.npmjs.org/nodemailer/-/nodemailer-6.9.16.tgz"
+  integrity sha512-psAuZdTIRN08HKVd/E8ObdV6NO7NTBY3KsC30F7M4H1OnmLCUNaS56FpYxyb26zWLSyYF9Ozch9KYHhHegsiOQ==
+
+nodemailer@6.9.1:
+  version "6.9.1"
+  resolved "https://registry.npmjs.org/nodemailer/-/nodemailer-6.9.1.tgz"
+  integrity sha512-qHw7dOiU5UKNnQpXktdgQ1d3OFgRAekuvbJLcdG5dnEo/GtcTHRYM7+UfJARdOFU9WUQO8OiIamgWPmiSFHYAA==
 
 nodemon@3.0.2:
   version "3.0.2"
@@ -9768,6 +9815,11 @@ uuid@^8.0.0, uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+uuid@^9.0.0:
+  version "9.0.1"
+  resolved "https://registry.npmjs.org/uuid/-/uuid-9.0.1.tgz"
+  integrity sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==
 
 v8flags@^2.0.10:
   version "2.1.1"
