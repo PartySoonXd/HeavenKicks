@@ -43,4 +43,5 @@ COPY --from=builder /app/next/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/next/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/next/.next/static ./.next/static
 
+EXPOSE 3000
 CMD [ "node", "server.js"]
