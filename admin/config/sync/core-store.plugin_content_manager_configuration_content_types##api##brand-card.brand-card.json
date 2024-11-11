@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::faq.faq",
+  "key": "plugin_content_manager_configuration_content_types::api::brand-card.brand-card",
   "value": {
     "settings": {
       "bulkable": true,
@@ -19,30 +19,45 @@
           "sortable": true
         }
       },
-      "question": {
+      "logo": {
         "edit": {
-          "label": "question",
+          "label": "logo",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "question",
-          "searchable": true,
-          "sortable": true
+          "label": "logo",
+          "searchable": false,
+          "sortable": false
         }
       },
-      "answer": {
+      "sneaker": {
         "edit": {
-          "label": "answer",
+          "label": "sneaker",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "answer",
+          "label": "sneaker",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "category": {
+        "edit": {
+          "label": "category",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "category",
           "searchable": true,
           "sortable": true
         }
@@ -109,24 +124,30 @@
     "layouts": {
       "list": [
         "id",
-        "question",
-        "answer",
-        "createdAt"
+        "logo",
+        "sneaker",
+        "category"
       ],
       "edit": [
         [
           {
-            "name": "question",
+            "name": "logo",
             "size": 6
           },
           {
-            "name": "answer",
+            "name": "sneaker",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "category",
             "size": 6
           }
         ]
       ]
     },
-    "uid": "api::faq.faq"
+    "uid": "api::brand-card.brand-card"
   },
   "type": "object",
   "environment": null,

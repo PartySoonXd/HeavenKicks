@@ -43,9 +43,6 @@
       "action": "api::category.category.findOne"
     },
     {
-      "action": "api::faq.faq.find"
-    },
-    {
       "action": "api::feedback.feedback.create"
     },
     {

@@ -4,6 +4,9 @@
   "type": "public",
   "permissions": [
     {
+      "action": "api::brand-card.brand-card.find"
+    },
+    {
       "action": "api::category-group.category-group.find"
     },
     {
@@ -16,7 +19,13 @@
       "action": "api::category.category.findOne"
     },
     {
+      "action": "api::faq.faq.find"
+    },
+    {
       "action": "api::product.product.find"
+    },
+    {
+      "action": "api::product.product.findBySlug"
     },
     {
       "action": "api::product.product.findOne"

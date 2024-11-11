@@ -6,6 +6,59 @@
     {
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
+      "subject": "api::brand-card.brand-card",
+      "properties": {
+        "fields": [
+          "logo",
+          "sneaker",
+          "category"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::brand-card.brand-card",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::brand-card.brand-card",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::brand-card.brand-card",
+      "properties": {
+        "fields": [
+          "logo",
+          "sneaker",
+          "category"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::brand-card.brand-card",
+      "properties": {
+        "fields": [
+          "logo",
+          "sneaker",
+          "category"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::cart-item.cart-item",
       "properties": {
         "fields": [
@@ -207,8 +260,8 @@
       "subject": "api::faq.faq",
       "properties": {
         "fields": [
-          "items.question",
-          "items.answer"
+          "question",
+          "answer"
         ]
       },
       "conditions": []
@@ -233,8 +286,8 @@
       "subject": "api::faq.faq",
       "properties": {
         "fields": [
-          "items.question",
-          "items.answer"
+          "question",
+          "answer"
         ]
       },
       "conditions": []
@@ -245,8 +298,8 @@
       "subject": "api::faq.faq",
       "properties": {
         "fields": [
-          "items.question",
-          "items.answer"
+          "question",
+          "answer"
         ]
       },
       "conditions": []
@@ -806,6 +859,34 @@
     },
     {
       "action": "plugin::i18n.locale.update",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::redis.settings.read",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::rest-cache.cache.purge",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::rest-cache.cache.read-provider",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::rest-cache.cache.read-strategy",
       "actionParameters": {},
       "subject": null,
       "properties": {},
