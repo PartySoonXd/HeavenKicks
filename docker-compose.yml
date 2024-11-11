@@ -1,18 +1,51 @@
 services:
+  redis: 
+    container_name: redis_cache
+    image: redis:latest
+    restart: unless-stopped
+    env_file: "./admin/.env.local"
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_USER=${REDIS_USER}
+      - REDIS_USER_PASSWORD=${REDIS_USER_PASSWORD}
+    ports:
+      - "6380:6379"
+    networks:
+      - strapi
+    volumes:
+      - redis-data:/var/lib/redis/data/
+      
+  postgres:
+    container_name: strapiDB
+    platform: linux/amd64 #for platform error on Apple M1 chips
+    restart: unless-stopped
+    env_file: "./admin/.env.local"
+    image: postgres:12.0-alpine
+    environment:
+      - POSTGRES_USER=${DATABASE_USERNAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+    ports:
+      - "5432:5432"
+    networks:
+      - strapi
+    volumes:
+      - strapi-data:/var/lib/postgresql/data/ #using a volume
+
   client:
-      build: /client
-      container_name: nextjs
-      env_file: /client/.env.local
-      ports:
-        - 3000:3000
-      restart: on-failure
+    build: ./client
+    container_name: nextjs
+    env_file: "./client/.env.local"
+    ports:
+      - 3000:3000
+    restart: on-failure
 
   strapi:
-    build: /admin
+    build: ./admin
     container_name: strapi
     image: strapi:latest
     restart: unless-stopped
-    env_file: /admin/.env.local
+    env_file: "./admin/.env.local"
     ports:
       - 1337:1337
     networks:
@@ -21,26 +54,9 @@ services:
       - postgres
     command: yarn start
 
-  postgres:
-    container_name: strapiDB
-    platform: linux/amd64 #for platform error on Apple M1 chips
-    restart: unless-stopped
-    env_file: /admin/.env.local
-    image: postgres:12.0-alpine
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: HeavenKicks_DB
-    volumes:
-      - strapi-data:/var/lib/postgresql/data/ #using a volume
-
-    ports:
-      - "5432:5432"
-    networks:
-      - strapi
-
 volumes:
   strapi-data:
+  redis-data:
 
 networks:
   strapi:
