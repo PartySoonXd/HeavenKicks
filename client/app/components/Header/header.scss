@@ -118,8 +118,6 @@
         width: 30px;
         height: 15px;
         
-        position: absolute;
-        right: 0;
         justify-content: space-between;
         align-items: center;
         flex-direction: column;
@@ -190,11 +188,19 @@
         }
     }
     @include media($m-breakpoint) {
-        margin-top: 15px;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+
+        position: sticky;
+        top: 0;
+        z-index: 100;
+
+        margin: 0 -15px;
+        padding: 10px;
+
+        background: $secondary;
         &-hamburger {
             display: flex;
-            position: fixed;
-            right: 15px;
         }
         &-nav {
             align-items: flex-start;
