@@ -1,9 +1,8 @@
-import Image from "next/image"
 import Link from "next/link"
 
 export default function BrandCard({item}) {
     return (
-        <Link href={`/catalog?brand=${item.attributes.category.data.attributes.name}`} className="brand-card">
+        <Link href={`/catalog?brand=${item.attributes.category.data.attributes.slug}`} className="brand-card">
             <div className="left-side">
                 <img 
                     src={process.env.NEXT_PUBLIC_ASSETS_URL + item.attributes.logo.data.attributes.url} 
