@@ -10,7 +10,7 @@ export default function Filters({isActive, setIsActive, setFilters}) {
     const [categories, setCategories] = useState()
     useEffect(() => {
         const getCategories = async() => {
-            await $apiHost.get('/api/category-groups?&fields=name&populate[categories][fields]=name')
+            await $apiHost.get('/api/category-groups?&fields=name&populate[categories][fields]=name,slug')
             .then(({data}) => {
                 setCategories(data.data)
             })

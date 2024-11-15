@@ -15,8 +15,8 @@ export default function CategoryGroup({name, categories}) {
             {isActive && categories.map(item => {
                 return (
                     <li className="category" key={item.id}>
-                        <input type="checkbox" name={item.attributes.name} id={item.attributes.name} className="category-checkbox"/>
-                        <label htmlFor={item.attributes.name} className="category-label h4">{item.attributes.name}</label>
+                        <input type="checkbox" name={item.attributes.slug} id={item.attributes.slug} className="category-checkbox"/>
+                        <label htmlFor={item.attributes.slug} className="category-label h4">{item.attributes.name}</label>
                     </li>
                 )
             })}
