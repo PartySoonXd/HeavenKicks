@@ -7,14 +7,14 @@
     margin: 0 -10px;
     .product-card {
         margin: 0 10px 30px 10px;
-        flex: 1 1 280px;
+        flex: 1 1 220px;
         width: calc(100% / 4);
     }
     &.catalog {
-        margin: 0 -5px 0 0;
+        margin: 0 -25px 0 0;
         .product-card {
             width: calc(100% / 3);
-            margin: 15px 5px;
+            margin: 40px 25px;
         }
     }
 }
