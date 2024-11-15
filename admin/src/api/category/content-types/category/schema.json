@@ -26,6 +26,11 @@
       "relation": "manyToOne",
       "target": "api::category-group.category-group",
       "inversedBy": "categories"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
     }
   }
 }

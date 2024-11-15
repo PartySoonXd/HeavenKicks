@@ -37,7 +37,7 @@ module.exports = createCoreController('api::product.product', ({strapi}) => ({
         if (filter) {
             const filtersArray = filter.replaceAll(',', " ").split(" ")
             filters.categories = {
-                name: {
+                slug: {
                     $eq: filtersArray
                 }
             }

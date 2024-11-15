@@ -971,6 +971,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'manyToOne',
       'api::category-group.category-group'
     >;
+    slug: Attribute.UID<'api::category.category', 'name'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
