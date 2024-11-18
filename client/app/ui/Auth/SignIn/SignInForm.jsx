@@ -19,6 +19,8 @@ export default function SignInForm() {
     const [title, setTitle] = useState("")
     const [text, setText] = useState("")
 
+    const [isShownPass, setIsShownPass] = useState(false)
+
     if (isActive) {
         setTimeout(() => {
             setIsActive(false)
@@ -57,7 +59,16 @@ export default function SignInForm() {
             <h1 className="h1 auth-form-title">Sign in</h1>
             <form onSubmit={e => formHandler(e)} className="auth-form">
                 <InputField type="text" placeholder="email or username" name="identifier"/>
-                <InputField type="password" placeholder="password" name="password"/>
+                <div className="auth-form-password-wrapper">
+                    <InputField type={isShownPass ? "text": "password"} placeholder="password" name="password"/>
+                    <Image 
+                        src={isShownPass ? "/show-pass-icon.png" : "/hide-pass-icon.png"} 
+                        width={20} 
+                        height={20}
+                        alt="shown password"
+                        onClick={() => setIsShownPass(!isShownPass)}
+                    />
+                </div>
 
                 <button type="submit" className="auth-form-button links">SIGN IN</button>
             </form>
