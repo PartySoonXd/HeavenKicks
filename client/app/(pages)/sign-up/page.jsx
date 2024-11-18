@@ -3,12 +3,13 @@ import Image from "next/image";
 
 export default function SignUp() {
     return (
-        <main className="content" style={{maxHeight: "100vh", margin: "auto 0"}}>
+        <main className="content" style={{maxHeight: "100svh"}}>
             <div 
                 className="container" 
                 style={{
                     display: "flex",
                     alignItems: "center",
+                    justifyContent: "center",
                 }}
             >
                 <SignUpForm/>

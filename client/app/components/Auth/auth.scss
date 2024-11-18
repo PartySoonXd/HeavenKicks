@@ -36,6 +36,10 @@
     border-radius: 30px;
 
     transition: all .4s ease;
+
+    &.h3 {
+        color: $primary;
+    }
     &:hover {
         background: $primary;
         color: $secondary;
@@ -43,5 +47,14 @@
     }
     img {
         margin-left: 10px;
+    }
+}
+
+@include media($xs-breakpoint) {
+    .input-field {
+        width: 280px;
+    }
+    .google-button {
+        width: 250px;
     }
 }

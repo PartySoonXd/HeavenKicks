@@ -1,18 +1,16 @@
 .auth-form {
     display: flex;
-    width: 340px;
     
     flex-direction: column;
     align-items: center;
     
     &-container {
         display: flex;
-        height: 100vh;
-        
+        height: 100svh;
+
         flex-direction: column;
         align-items: center;
         
-        margin: 0 auto;
         padding: 0 40px;
         
         span {
@@ -22,6 +20,8 @@
     }
     &-logo {
         margin-top: 50px;
+
+        line-height: 0;
     }
     &-title {
         color: $accent;
@@ -51,6 +51,7 @@
         outline: none;
         transition: background .4s ease;
         cursor: pointer;
+        
         &:hover, &:focus {
             background: $accent;
             transition: background .4s ease;
@@ -74,16 +75,30 @@
     width: 60%;
     height: auto;
 }
+@include media($m-breakpoint) {
+    .auth-form {
+        &-container {
+            padding-right: 15px;
+        }
+    }
+}
 @include media($s-breakpoint) {
     .auth-form {
         &-container {
-            padding: 0 10px;
+            padding: 0;
+
+            span {
+                margin: 5px 0;
+            }
+        }
+        &-button {
+            margin-top: 20px;
         }
         &-logo {
             margin-top: 20px;
         }
         &-link {
-            margin-bottom: 20px;
+            margin: auto 0 20px 0;
         }
     }
     .auth-image {
