@@ -196,7 +196,7 @@
         z-index: 100;
 
         margin: 0 -15px;
-        padding: 10px;
+        padding: 10px 15px;
 
         background: $secondary;
         &-hamburger {
@@ -205,13 +205,13 @@
         &-nav {
             align-items: flex-start;
             flex-direction: column-reverse;
-            position: fixed;
+            position: absolute;
             left: 0;
-            top: -100%;
+            top: -500%;
 
             padding: 20px;
             background: $secondary;
-            z-index: 100;
+            z-index: 0;
             
             transition: top .4s ease-in;
             &.active {
