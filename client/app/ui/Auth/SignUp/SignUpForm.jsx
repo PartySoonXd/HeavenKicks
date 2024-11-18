@@ -137,7 +137,7 @@ export default function SignUpForm() {
             </form>
             <span className="h4">or</span>
             <GoogleButton/>
-            <h4 className="h4 auth-form-link">Already have an account? <Link href="/sign-in">Sign in</Link></h4>
+            <h4 className="h4 auth-form-link">Have an account? <Link href="/sign-in">Sign in</Link></h4>
         </div>
         </>
     )
