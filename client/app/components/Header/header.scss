@@ -116,7 +116,7 @@
     &-hamburger {
         display: none;
         width: 30px;
-        height: 15px;
+        height: 20px;
         
         justify-content: space-between;
         align-items: center;
@@ -155,7 +155,7 @@
             span {
                 &:nth-child(1) {
                     transform-origin: center;
-                    transform: translateY(6.5px) rotate(-45deg);
+                    transform: translateY(9px) rotate(-45deg);
                     transition: transform .5s ease;
                 }
                 &:nth-child(2) {
@@ -164,7 +164,7 @@
                 }
                 &:nth-child(3) {
                     transform-origin: center;
-                    transform: translateY(-6.5px) rotate(45deg);
+                    transform: translateY(-9px) rotate(45deg);
                     transition: transform .5s ease;
                 }
             }
@@ -209,7 +209,9 @@
             left: 0;
             top: -500%;
 
-            padding: 20px;
+            padding: 10px 15px;
+            box-sizing: border-box;
+
             background: $secondary;
             z-index: 0;
             
@@ -226,7 +228,7 @@
                 margin: 5px 0;
             }
             .separate-links {
-                margin-bottom: 10px;
+                margin: 0 -20px 10px -20px;
                 .auth-button {
                     margin: 0 10px 0 0;
                 }
