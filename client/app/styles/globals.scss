@@ -120,6 +120,10 @@ button {
 		padding: 0 15px;
 	}
 }
+
+.no-scroll {
+	overflow: hidden !important; 
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus,
