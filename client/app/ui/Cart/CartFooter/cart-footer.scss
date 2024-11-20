@@ -20,7 +20,7 @@
     &-buttons {
         display: flex;
         .catalog {
-            width: 400px;
+            width: 300px;
             display: flex;
 
             align-items: center;
@@ -36,7 +36,7 @@
             }
         }
         .checkout {
-            width: 500px;
+            width: 400px;
 
             background: $primary;
             transition: background .4s ease;
@@ -46,12 +46,29 @@
             }
         }
         .catalog, .checkout {
-            height: 80px;
+            height: 60px;
 
             border-radius: 35px;
             color: $secondary;
 
             cursor: pointer;
+        }
+    }
+    @include media($s-breakpoint) {
+        &-buttons {
+            flex-direction: column;
+            
+            text-align: center;
+            .catalog {
+                margin: 0;
+            }
+            .checkout {
+                margin: 20px 0 50px 0;
+            }
+            .catalog, .checkout {
+                max-width: 300px;
+                width: 100%;
+            }
         }
     }
 }

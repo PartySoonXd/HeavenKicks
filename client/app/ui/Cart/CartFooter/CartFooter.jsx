@@ -52,8 +52,8 @@ export default function CartFooter () {
             <>
             <h2 className="h2 cart-footer-total">Total: <span>{getTotalPrice()}$</span></h2>
             <div className="cart-footer-buttons">
-                <Link href="/catalog" className="catalog h3">CONTINUE SHOPPING</Link>
-                <button type="button" onClick={checkoutHandler} className="checkout h3">PROCEED TO CHECKOUT</button>
+                <Link href="/catalog" className="catalog h4">CONTINUE SHOPPING</Link>
+                <button type="button" onClick={checkoutHandler} className="checkout h4">PROCEED TO CHECKOUT</button>
             </div>
             </>
             }
