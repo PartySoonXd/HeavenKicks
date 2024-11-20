@@ -2,14 +2,18 @@
 
 import Image from "next/image"
 
-export default function Pagination({pagination, setCurrentPage, currentPage}) {
+export default function Pagination({pagination, setCurrentPage, currentPage, containerRef}) {
+    const handlePagination = (page) => {
+        setCurrentPage(page)
+        containerRef.current.scrollIntoView()
+    }
     if (pagination.pageCount > 0) {
         return (
             <div className="pagination">
                 <button 
                     type="button" 
                     disabled={currentPage === 1} 
-                    onClick={() => setCurrentPage(currentPage-1)} 
+                    onClick={() => handlePagination(currentPage-1)} 
                     className="minus-arrow"
                 >
                     <Image src="/arrow-icon.svg" width={35} height={15} alt="pagination button"/>
@@ -17,14 +21,18 @@ export default function Pagination({pagination, setCurrentPage, currentPage}) {
                 <ul className="pagination-list">
                     {pagination && [...Array(pagination.pageCount)].map((item, i) => {
                         return (
-                            <li className={`pagination-item h4 ${currentPage === i+1 && "active"}`} key={i}>{i+1}</li>
+                            <li 
+                                className={`pagination-item h4 ${currentPage === i+1 && "active"}`} 
+                                key={i}
+                                onClick={() => handlePagination(i+1)}
+                            >{i+1}</li>
                         )
                     })}
                 </ul>
                 <button 
                     type="button" 
                     disabled={currentPage >= pagination.pageCount} 
-                    onClick={() => setCurrentPage(currentPage+1)} 
+                    onClick={() => handlePagination(currentPage+1)} 
                     className="plus-arrow"
                 >
                     <Image src="/arrow-icon.svg" width={35} height={15} alt="pagination button"/>
