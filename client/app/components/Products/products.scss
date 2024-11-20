@@ -17,4 +17,31 @@
             margin: 40px 25px;
         }
     }
+    &.new-arrivals {
+        .product-card {
+            margin: 30px;
+            flex: 1 1 260px;
+        }
+    }
+    @include media($m-breakpoint) {
+        &.catalog {
+            margin: 0 -15px 0 0;
+            .product-card {
+                margin: 40px 15px;
+            }
+        }
+    }
+    @include media($xs-breakpoint) {
+        &.catalog {
+            margin: 0;
+            .product-card {
+                margin: 35px 0px;
+            }
+        }
+        &.new-arrivals {
+            .product-card {
+                margin: 25px 0;
+            }
+        }
+    }
 }
