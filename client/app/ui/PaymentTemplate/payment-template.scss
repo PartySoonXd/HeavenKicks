@@ -1,6 +1,8 @@
 .payment-template {
     display: flex;
-    height: 100vh;
+    height: 100svh;
+
+    padding: 0 10px;
 
     align-items: center;
     justify-content: center;
@@ -13,11 +15,28 @@
     }
     .h1 {
         margin-bottom: 55px;
-
+        
         color: $primary;
+
+        text-align: center;
         a {
             color: $accent;
             text-decoration: underline;
+        }
+    }
+    @include media($s-breakpoint) {
+        &-status {
+            font-size: 75px;
+            margin-bottom: 25px;
+        }
+        .h1 {
+            font-size: 26px;
+            line-height: 33px;
+        }
+    }
+    @include media($xs-breakpoint) {
+        &-status {
+            font-size: 55px;
         }
     }
 }
