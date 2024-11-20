@@ -94,18 +94,21 @@
                 }
             }
         }
-        
     }
     @include media($s-breakpoint) {
         width: 40%;
-        height: 100vh;
+        height: 100svh;
+        overflow: scroll;
+        
         padding: 20px;
+        
         background: $secondary;
         &-container {
             display: none;
             width: 100vw;
-            height: 100vh;
-
+            min-height: 100vh;
+            overflow: hidden;
+            
             top: 0;
             left: 0;
             position: fixed;
