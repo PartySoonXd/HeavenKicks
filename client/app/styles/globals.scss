@@ -97,6 +97,10 @@ button {
 	font-weight: 400;
 	font-size: 20px;
 	line-height: 30px;
+	@include media($xs-breakpoint) {
+		font-size: 18px;
+		line-height: 26px;
+	}
 }
 .links {
 	font-weight: 400;
