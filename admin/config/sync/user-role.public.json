@@ -22,6 +22,9 @@
       "action": "api::faq.faq.find"
     },
     {
+      "action": "api::feedback.feedback.create"
+    },
+    {
       "action": "api::product.product.find"
     },
     {
@@ -29,6 +32,9 @@
     },
     {
       "action": "api::product.product.findOne"
+    },
+    {
+      "action": "api::subscriber.subscriber.create"
     },
     {
       "action": "plugin::users-permissions.auth.callback"

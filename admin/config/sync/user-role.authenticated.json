@@ -64,6 +64,9 @@
       "action": "api::product.product.findOne"
     },
     {
+      "action": "api::subscriber.subscriber.create"
+    },
+    {
       "action": "plugin::users-permissions.auth.changePassword"
     },
     {
