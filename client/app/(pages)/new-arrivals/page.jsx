@@ -15,7 +15,7 @@ export default function NewArrivals() {
         <main className="content">
             <PageIntro title="New arrivals" image="/new-arrivals-intro.webp"/>
             <div className="new-arrivals-container" style={{margin: "30px 0 40px 0", minHeight: "40vh", display: "flex", justifyContent: "center"}}>
-                <Products setPagination={setPagination} pageSize={40} newArrival={true} className="new-arrivals"/>
+                <Products setPagination={setPagination} pageSize={40} newArrival={true}/>
             </div>
             <div className="new-arrivals-pretty-button-container" style={{
                 marginBottom: "70px"

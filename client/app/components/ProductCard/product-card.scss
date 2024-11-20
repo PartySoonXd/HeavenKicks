@@ -1,12 +1,11 @@
 .product-card {
     display: flex;
-    max-width: 335px;
 
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 
-    margin-bottom: 20px;
+    margin: 0 20px 30px 20px;
     a {
         display: flex;
 
@@ -20,8 +19,6 @@
         margin-bottom: 5px;
 
         object-fit: cover;
-        
-        border-radius: 40px;
         
         line-height: 0;
     }

@@ -6,7 +6,7 @@ import ProductCard from "@/app/components/ProductCard/ProductCard"
 import { $apiHost } from "@/app/http"
 import navigate from "@/app/lib/navigate"
 
-export default function Products({filters, sort="", search="", className, setPagination, page=1, pageSize=9, newArrival="", brand=""}) {
+export default function Products({filters, sort="", search="", className="", setPagination, page=1, pageSize=12, newArrival="", brand=""}) {
     const [products, setProducts] = useState()
     
     useEffect(() => {

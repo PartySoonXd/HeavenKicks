@@ -4,44 +4,45 @@
 
     justify-content: center;
     
-    margin: 0 -10px;
     .product-card {
-        margin: 0 10px 30px 10px;
-        flex: 1 1 220px;
-        width: calc(100% / 4);
+        width: calc(100% / 4 - 40px);
     }
     &.catalog {
         margin: 0 -25px 0 0;
         .product-card {
-            width: calc(100% / 3);
+            width: calc(100% / 3 - 50px);
             margin: 40px 25px;
         }
     }
-    &.new-arrivals {
-        .product-card {
-            margin: 30px;
-            flex: 1 1 260px;
-        }
-    }
     @include media($m-breakpoint) {
+        .product-card {
+            width: calc(100% / 3 - 40px);
+        }
         &.catalog {
-            margin: 0 -15px 0 0;
             .product-card {
-                margin: 40px 15px;
+                width: calc(100% / 2 - 50px);
             }
         }
     }
-    @include media($xs-breakpoint) {
+    @include media($s-breakpoint) {
+        .product-card, &.catalog .product-card {
+            margin: 0 10px 70px 10px;
+            width: calc(100% / 2 - 20px);
+        }
         &.catalog {
             margin: 0;
-            .product-card {
-                margin: 35px 0px;
-            }
         }
-        &.new-arrivals {
-            .product-card {
-                margin: 25px 0;
-            }
+    }
+    @include media($xxs-breakpoint) {
+        .product-card, &.catalog .product-card {
+            margin: 0 0 50px 0;
+            width: 100%;
         }
+        // &.catalog {
+        //     margin: 0;
+        //     .product-card {
+        //         margin: 35px 10px;
+        //     }
+        // }
     }
 }
