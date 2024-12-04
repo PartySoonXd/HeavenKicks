@@ -1,9 +1,13 @@
 "use client"
 
+import { useSearchParams } from "next/navigation"
 import { useState } from "react"
 
 export default function CategoryGroup({name, categories}) {
     const [isActive, setIsActive] = useState(true)
+
+    const searchParams = useSearchParams()
+    
     return (
         <ul className={`category-group ${isActive && "active"}`}>
             <div className={`category-group-title ${isActive && "active"}`}>
@@ -15,7 +19,14 @@ export default function CategoryGroup({name, categories}) {
             {isActive && categories.map(item => {
                 return (
                     <li className="category" key={item.id}>
-                        <input type="checkbox" name={item.attributes.slug} id={item.attributes.slug} className="category-checkbox"/>
+                        <input 
+                            type="checkbox" 
+                            defaultChecked={searchParams.get(`category[${name.toLowerCase()}]`)?.split(',').includes(item.attributes.slug)} 
+                            name={item.attributes.slug} 
+                            value={name} 
+                            id={item.attributes.slug} 
+                            className="category-checkbox"
+                        />
                         <label htmlFor={item.attributes.slug} className="category-label h4">{item.attributes.name}</label>
                     </li>
                 )
