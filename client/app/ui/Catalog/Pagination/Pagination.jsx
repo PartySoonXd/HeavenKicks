@@ -19,7 +19,7 @@ export default function Pagination({pagination}) {
             <div className="pagination">
                 <button 
                     type="button" 
-                    disabled={searchParams.has('page') && searchParams.get('page') == 1} 
+                    disabled={!searchParams.has('page') || searchParams.get('page') <= 1} 
                     onClick={() => handlePagination(searchParams.get('page') - 1)} 
                     className="minus-arrow"
                 >
