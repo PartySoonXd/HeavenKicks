@@ -4,24 +4,17 @@ import { useState, useEffect } from "react"
 
 import ProductCard from "@/app/components/ProductCard/ProductCard"
 import { $apiHost } from "@/app/http"
-import navigate from "@/app/lib/navigate"
+import { useSearchParams } from "next/navigation"
 
-export default function Products({filters, sort="", search="", className="", setPagination, page=1, pageSize=12, newArrival="", brand=""}) {
+export default function Products({filters, className, setPagination, pageSize=12, newArrival=""}) {
     const [products, setProducts] = useState()
+
+    const searchParams = useSearchParams()
     
     useEffect(() => {
         const getProducts = async() => {
             try {
-                let values = []
-                if(filters && Object.keys(filters).length > 0) {
-                    page = 1
-                    values = Object.keys(filters)
-                }
-                if(brand) {
-                    values.push(brand)
-                    navigate('/catalog')
-                }
-                await $apiHost.get(`/api/products?filter=${values}&sort=${sort}&search=${search}&page=${page}&pageSize=${pageSize}&newArrival=${newArrival}`)
+                await $apiHost.get(`/api/products?pagination[pageSize]=${pageSize}&pagination[page]=${searchParams.has('page') ? searchParams.get('page'): 1}&${filters ? `${filters}`: ""}&${newArrival && "new-arrival=true"}`)
                 .then(({data}) => {
                     setProducts(data.entries.results)
                     setPagination(data.entries.pagination)
@@ -31,7 +24,7 @@ export default function Products({filters, sort="", search="", className="", set
             }
         }
         getProducts()
-    }, [filters, sort, search, page])
+    }, [searchParams, filters])
     
     if(products?.length > 0) {
         return (

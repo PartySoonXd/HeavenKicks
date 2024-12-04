@@ -13,14 +13,11 @@ import { useSearchParams } from "next/navigation";
 export default function Catalog() {
     const [isActive, setIsActive] = useState(false)
 
-    const [filters, setFilters] = useState()
-    const [sort, setSort] = useState()
-    const [search, setSearch] = useState()
-    const [pagination, setPagination] = useState()
-    const [currentPage, setCurrentPage] = useState(1)
-
     const searchParams = useSearchParams()
-    const brand = searchParams.get('brand')
+    const params = new URLSearchParams(searchParams)
+    
+    const [filters, setFilters] = useState(params.toString())
+    const [pagination, setPagination] = useState()
 
     const containerRef = useRef(null)
 
@@ -47,23 +44,13 @@ export default function Catalog() {
                     display: "flex",
                     flexDirection: "column"
                 }}>
-                    <Options setIsActive={setIsActive} setSearch={setSearch} setSort={setSort}/>
+                    <Options setIsActive={setIsActive} setFilters={setFilters}/>
                     <Products 
                         className="catalog" 
                         filters={filters} 
-                        sort={sort} 
-                        search={search} 
                         setPagination={setPagination} 
-                        page={currentPage}
-                        brand={brand}
                     />
-                    {pagination && 
-                    <Pagination 
-                        pagination={pagination} 
-                        setCurrentPage={setCurrentPage} 
-                        currentPage={currentPage}
-                        containerRef={containerRef}
-                    />}
+                    {pagination && <Pagination pagination={pagination}/>}
                 </div>
             </div>
         </main>
