@@ -173,7 +173,8 @@
         "fields": [
           "name",
           "products",
-          "category_group"
+          "category_group",
+          "slug"
         ]
       },
       "conditions": [
@@ -197,7 +198,8 @@
         "fields": [
           "name",
           "products",
-          "category_group"
+          "category_group",
+          "slug"
         ]
       },
       "conditions": [
@@ -212,7 +214,8 @@
         "fields": [
           "name",
           "products",
-          "category_group"
+          "category_group",
+          "slug"
         ]
       },
       "conditions": [

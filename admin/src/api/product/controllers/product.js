@@ -19,30 +19,37 @@ module.exports = createCoreController('api::product.product', ({strapi}) => ({
         return this.transformResponse(sanitizedEntity);
     },
     async find(ctx) {
-        const filters = {}
-        const {filter, sort, slug, search, page, pageSize, newArrival} = await this.sanitizeQuery(ctx); 
-        if (search) {
-            filters.title = {
-                $containsi: search
-            }
-        }
-        if (slug) {
-            filters.slug = slug
-        }
-        if (newArrival) {
-            filters.newArrival = {
-                $eq: newArrival
-            }
-        }
-        if (filter) {
-            const filtersArray = filter.replaceAll(',', " ").split(" ")
-            filters.categories = {
-                slug: {
-                    $eq: filtersArray
-                }
-            }
+        const categoryFilters = {
+            $and: [
+
+            ]
         }
         
+        const query = await this.sanitizeQuery(ctx)
+        
+        if (query.category) {
+            Object.keys(query.category).map(item => {
+                categoryFilters['$and'].push({
+                    categories: {
+                        slug: {
+                            $in: query.category[item].split(',')
+                        }
+                    }
+                })
+            })
+        }
+        if (query?.options?.search) {
+            categoryFilters['$and'].push({
+                title: {
+                    $containsi: query.options['search']
+                }
+            })
+        }
+        if (query['new-arrival']) {
+            categoryFilters.newArrival = query['new-arrival']
+        }
+        const sort = query?.options?.sort ? {price: query.options.sort} : {publishedAt: 'desc'}
+
         const entries = await strapi.entityService.findPage('api::product.product', {
             publicationState: "live",
             fields: ['title', 'price', 'sizes', 'slug'],
@@ -51,9 +58,9 @@ module.exports = createCoreController('api::product.product', ({strapi}) => ({
                 images: true
             },
             sort,
-            filters: filters,
-            page: page,
-            pageSize: pageSize
+            filters: categoryFilters,
+            page: query.pagination.page,
+            pageSize: query.pagination.pageSize
         })
 
         return {entries}
