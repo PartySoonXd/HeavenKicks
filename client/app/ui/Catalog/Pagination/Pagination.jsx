@@ -19,8 +19,8 @@ export default function Pagination({pagination}) {
             <div className="pagination">
                 <button 
                     type="button" 
-                    disabled={!searchParams.has('page') || searchParams.get('page') <= 1} 
-                    onClick={() => handlePagination(searchParams.get('page') - 1)} 
+                    disabled={pagination.page <= 1} 
+                    onClick={() => handlePagination(pagination.page - 1)} 
                     className="minus-arrow"
                 >
                     <Image src="/arrow-icon.svg" width={35} height={15} alt="pagination button"/>
@@ -29,7 +29,7 @@ export default function Pagination({pagination}) {
                     {pagination && [...Array(pagination.pageCount)].map((item, i) => {
                         return (
                             <li 
-                                className={`pagination-item h4 ${searchParams.get('page') == i+1 && "active"}`} 
+                                className={`pagination-item h4 ${pagination.page === i+1 && "active"}`} 
                                 key={i}
                                 onClick={() => handlePagination(i+1)}
                             >{i+1}</li>
@@ -38,8 +38,8 @@ export default function Pagination({pagination}) {
                 </ul>
                 <button 
                     type="button" 
-                    disabled={searchParams.get('page') >= pagination.pageCount} 
-                    onClick={() => handlePagination(parseInt(searchParams.get('page')) + 1)} 
+                    disabled={pagination.page >= pagination.pageCount} 
+                    onClick={() => handlePagination(pagination.page + 1)} 
                     className="plus-arrow"
                 >
                     <Image src="/arrow-icon.svg" width={35} height={15} alt="pagination button"/>
