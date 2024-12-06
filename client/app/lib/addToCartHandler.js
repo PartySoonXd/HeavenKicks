@@ -2,8 +2,8 @@ import { $apiHost } from "../http"
 import { getToken } from "./tokenHandler"
 
 const getProductBySlug = async(slug) => {
-    const {data} = await $apiHost.get(`/api/products?slug=${slug}`)
-    return data.entries.results[0]
+    const {data} = await $apiHost.get(`/api/products/${slug}`)
+    return data.data
 }
 export const updateCartStore = async(id, token, user) => {
     await $apiHost.get(`/api/carts/${id}?populate=cart_items`, {
@@ -32,9 +32,9 @@ export const addToCartHandler = async(user, slug, size) => {
             cart: {
                 connect: [cartId]
             },
-            title: product.title,
-            price: product.price,
-            imageURL: product.images[0].formats.medium.url,
+            title: product.attributes.title,
+            price: product.attributes.price,
+            imageURL: product.attributes.images?.data[0]?.attributes?.formats?.medium?.url,
             size
         },
     }, {
